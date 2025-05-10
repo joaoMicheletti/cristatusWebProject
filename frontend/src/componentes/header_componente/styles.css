@@ -1,0 +1,35 @@
+#headerComponente{
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    position: fixed; /* Fixando no topo */
+    top: 0; /* Colocando o cabeçalho no topo da página */
+    left: 0; /* Alinhando à esquerda */
+    padding: 10px 0; /* Espaçamento interno */
+    z-index: 1000; /* Garantindo que o cabeçalho fique acima de outros elementos */
+}
+#linkHeaderComponente {
+    margin-left: 20px;
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: black;
+}
+#linkHeaderComponente:hover{
+    font-weight: 600;
+}
+#notificationCliente {
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+#notificationCliente:hover {
+    opacity: 50%;
+}
+.notificationCliente{
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.notificationCliente:hover {
+    opacity: 50%;
+}

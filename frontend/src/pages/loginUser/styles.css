@@ -1,0 +1,55 @@
+#sectionFormulario {
+    height: 100vh;
+    width: 100%;
+}
+#divformulario {
+    margin-left: 10%;
+    margin-top: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+}
+#formulario{
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(241, 248, 248);
+    box-shadow: 3px 3px 10px black;
+    cursor: pointer;
+}
+#formulario:hover {
+    width: 100%;
+    margin-left: 0%;
+    box-shadow: 3px 3px 15px black;
+}
+.titleloginUser {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.inputLoginCrister {
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+    height: 35px;
+    margin-bottom: 20px;
+}
+.buttonLoginUser {
+    width: 50%;
+    height: 35px;
+    border-radius: 5px;
+    margin-left: 25%;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: rgb(119, 86, 161);
+}
+.alerta_login{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+}
