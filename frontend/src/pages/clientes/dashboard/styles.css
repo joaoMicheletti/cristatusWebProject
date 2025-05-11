@@ -60,9 +60,10 @@ button.next {
 }
 
 .card-img {
+    text-decoration: none;
     height: 200px;
     width: 100%;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 .card-img-inner {
@@ -70,9 +71,12 @@ button.next {
     height: 100%;
     object-fit: cover;
 }
-
+#cardLk {
+    text-decoration: none;
+}
 .card-description {
-    padding: 10px;
+    text-decoration: none;
+    text-align: center;
     text-align: center;
     font-size: 16px;
     color: #333;
