@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import Api from '../../services/api';
+import Api from '../../../services/api';
 import './styles.css';
 import { useNavigate } from "react-router-dom";
 
@@ -24,13 +24,13 @@ export default function LoginUser() {
             //enviar para a api e autenticar usuario
             await Api.post('/loginUser', Data).then((response) => {
                 var Response = response.data;
-                if(response.res === 'User not found!'){
+                console.log('aqui:', Response.res)
+                if(Response.res === 'User not found!'){
                     document.querySelector('.alerta_login').innerHTML ='Usuário não encontrado.'
                 } else {
-                    sessionStorage.setItem("token", response.res);                    
+                    sessionStorage.setItem("token", Response.res);                    
                     Hystory('/dashboardCliente')
-                }
-                console.log(Response.res )
+                };
             }).catch((erro) =>{
                 alert("server not found");
             });

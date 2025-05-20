@@ -25,15 +25,7 @@ export default function Dashboard() {
     ];
 
     const cards = [
-        { img: _07, link: "analiseCliente", description: "Analise e liberação" },
-        { img:  _07, link: "", description: "Relatorio de Métricas." },
-        { img:  _07, link: "", description: " Kcickoff/acessos." },
-
-        { img: _07, link: "", description: "ActionPlan"},
-        { img:  _07, link: "", description: "Agenda de Eventos." },
-        { img:  _07, link: "", description: "Meu Plano." },
-
-        { img:  _07, link: "", description: "Conheça nossos Produtos." }
+        { img: _07, link: "createContent", description: "Create Content" },
         
     ];
 

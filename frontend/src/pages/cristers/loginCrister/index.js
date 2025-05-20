@@ -24,10 +24,11 @@ export default function LoginUser() {
             //enviar para a api e autenticar usuario
             await Api.post('/loginCrister', Data).then((response) => {
                 var Response = response.data;
-                if(response.res === 'User not found!'){
+                console.log(Response);
+                if(Response.res === 'User not found!'){
                     document.querySelector('.alerta_login').innerHTML ='Usuário não encontrado.'
                 } else {
-                    sessionStorage.setItem("token", response.res);                    
+                    sessionStorage.setItem("tokenCrister", Response.res);                    
                     Hystory('/dashboardCrister')
                 }
                 console.log(Response.res )

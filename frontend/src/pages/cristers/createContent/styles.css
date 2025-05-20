@@ -1,0 +1,26 @@
+#sectionCreateContent{
+    background-color: aqua;
+    height: auto;
+    margin-top: 50px;
+}
+.titleCreateContent {
+    text-align: center;
+    margin-top: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#clientesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px;
+}
+.card {
+    cursor: pointer;
+    width: 300px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+}

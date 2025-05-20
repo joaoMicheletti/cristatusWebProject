@@ -1,0 +1,55 @@
+#calendarioConteudo {
+    margin-top: 50px;
+    background-color: aqua;
+}
+#containerCalendario {
+    width: 90%;
+    margin-left: 5%;
+    background-color: blue;
+}
+#initEndContent {
+    width: 100%;
+    margin-left: 0%;
+    background-color: yellowgreen;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.labelCalendarioCriar{
+    font-size: 15px;
+    font-weight: 600;
+margin-bottom: 10px;}
+.dateInput{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+}
+#btnCalendaroCriar {
+    margin-top: 20px;
+    width: 50%;
+    height: 35px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+#respCrono {
+    text-align: center;
+    color: red;
+    font-weight: 900;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#containerCalendarioCreate {
+    background-color: blueviolet;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.legendaPublicação {
+    margin-top: 10px;
+    margin-left: 5%;
+    width: 90%;
+    border-radius: 5px;
+}
