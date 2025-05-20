@@ -4,7 +4,6 @@ import HeaderComponent from '../../../componentes/header_componente';
 import FooterComponente from "../../../componentes/footer_componente";
 import Api from '../../../services/api';
 import { FaCalendarAlt } from "react-icons/fa";
-import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 
 export default function Calendario() {
     var [ img, setImg] = useState([]);
@@ -121,12 +120,9 @@ export default function Calendario() {
             document.querySelector('.responseSendMovi').innerHTML = "* Selecione um arquivo!"
         };    
     };
-    // aprovação /mandar para o lead:
-     async function aprovedContent() {
-        console.log('aprovado');
-        // tratativas de aprovação/ com o backend + automação de publicação.
-    }
+    
 
+    
     return (
         <>
             <HeaderComponent />
@@ -164,6 +160,37 @@ export default function Calendario() {
 
                 <div id="containerCalendarioCreate">
                     {calendario.map((conteudo, index) => {
+                        let tema = ''; // armazenando o tema;
+                        let formato = ''; // armazenando o valor do select 
+                        let legenda = ''; // armazendando a Legenda da publicação;
+                        
+                        
+                        // mandar conteúdo para aprovação :
+                        // aprovação /mandar para o lead:
+                        async function aprovedContent() {
+                            if (tema === ''){
+                                alert('Defina o tema da Publicação!')
+
+                            }else if(formato === 'selecionar' || formato ===''){
+                                alert('Selecione o Formato da Publicação!')
+                            } else if(legenda === ''){
+                                alert("forneça a lengenda da publicação");
+                            } else {
+                                
+                                // tratativas de aprovação/ com o backend + automação de publicação.
+                                let Data = {
+                                    dia: conteudo.dia, mes: conteudo.mes, ano: conteudo.ano, tokenUser:localStorage.getItem('referenciaCliente'), aprovadoCristar: "aguardando",
+                                    tema, formato, legenda, };
+                                console.log(Data)
+                                await Api.post('enviarAprovacao', Data).then((resposne) => {
+                                    console.log(resposne);
+
+                                }).catch((Erro) => {
+                                    console.log("erro interno");
+                                });
+                            };
+                            
+                        }
                         return(
                             <div className="contentpublication" key={index}>
                 
@@ -171,16 +198,32 @@ export default function Calendario() {
                                     <FaCalendarAlt size={20}/>
                                     <p className="txtDataContent">{conteudo.dia+"/"+conteudo.mes+"/"+conteudo.ano}</p>
                                 </div>
+                                <div className="coteudoArte">
+                                    <label>
+                                        Tema:
+                                        <input className="slectFormato" id={`t${index}`}
+                                            placeholder=" * TEMA"
+                                            onChange={e=> tema = e.target.value }
+                                        />
+                                    </label>
+                                </div>
                         
                                 <div className="coteudoArte">
-                                    <MdNavigateBefore className="seta" size={30} />
-                                    <div className="art">art publicação here</div>                            
-                                    <MdNavigateNext className="seta" size={30} />
+                                    <label>
+                                        Formato
+                                        <select className="slectFormato" id={`_${index}`}
+                                            onChange={e => formato = e.target.value} >
+                                            <option value='selecionar'>Selecione um formato</option>
+                                            <option value='estatico'>Estático</option>
+                                            <option value='carrossel'>Carrossel</option>
+                                            <option value='video'>Vídeo</option>
+                                        </select>
+                                    </label>
                                 </div>
                         
                                 <div className="legendaCliente">
                                     <h3>Legenda:</h3>
-                                    <textarea rows={15} className="legendaPublicação" 
+                                    <textarea onChange={e => legenda = e.target.value} rows={15} className="legendaPublicação" 
                                     placeholder={conteudo.legenda}>
                                     </textarea>
                                 </div>
@@ -197,7 +240,7 @@ export default function Calendario() {
                                     </div>
                                 </div>
                                 <div className="BtnAprovação">
-                                    <buttonn type="buttonn" onClick={aprovedContent} className="btnAprova" >Aprovado</buttonn>
+                                    <buttonn type="buttonn" onClick={aprovedContent} className="btnAprova" >Aprovação</buttonn>
                                 </div>
                             </div>
                         )
