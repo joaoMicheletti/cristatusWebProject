@@ -10,6 +10,7 @@ import LoginCrister from './pages/cristers/loginCrister/index.js';
 import DashboarCrister from './pages/cristers/dashboard/index.js';
 import CreateContent from './pages/cristers/createContent/index.js';
 import Calendario from './pages/cristers/calendario/index.js';
+import Aprovacao from './pages/cristers/aprovacao/index.js';
 // <Route path='*' element={<NotFound/>}/>
 export default function Rotas(){
     return(
@@ -24,6 +25,7 @@ export default function Rotas(){
                 <Route path='dashboardCrister' element={<DashboarCrister/>}/>
                 <Route path='createContent' element={<CreateContent/>}/>
                 <Route path='calendario' element={<Calendario/>}/>
+                <Route path='aprovacao' element={<Aprovacao/>} />
             </Routes>
         </Router>
     )

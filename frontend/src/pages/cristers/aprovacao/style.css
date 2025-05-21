@@ -1,0 +1,48 @@
+#sectionAprovacao {
+    background-color: aqua;
+    margin-top: 50px;
+}
+.containerAprovacao {
+    margin-top: 50px;
+    background-color: yellow;
+    margin-left: 5%;
+    width: 90%;
+}
+.selectClient {
+    text-align: center;
+}
+.selecionClinete {
+    text-align: center;
+    border-radius: 5px;
+    height: 30px;
+    width: 50%;
+    margin-bottom: 10px;
+}
+.dataCronogramaSelect {
+    background-color: blue;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+.dataCronogramaSelect input{
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.btnDiv {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    background-color: bisque;
+}.bntBuscarCronograma {
+    width: 50%;
+    height: 30px;
+    border-radius: 5px;
+    background-color: aqua;
+}
+#Alerta{
+    font-size: 20px;
+    font-weight: 600;
+    color: red;
+}

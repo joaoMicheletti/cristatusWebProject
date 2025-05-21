@@ -189,7 +189,6 @@ export default function Calendario() {
                                     console.log("erro interno");
                                 });
                             };
-                            
                         }
                         return(
                             <div className="contentpublication" key={index}>
