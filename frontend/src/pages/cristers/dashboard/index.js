@@ -26,6 +26,8 @@ export default function Dashboard() {
 
     const cards = [
         { img: _07, link: "createContent", description: "Create Content" },
+        { img: _07, link: "aprovacao", description: "aprovação de conteudo" },
+        
         
     ];
 

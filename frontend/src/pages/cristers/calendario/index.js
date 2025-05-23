@@ -4,6 +4,7 @@ import HeaderComponent from '../../../componentes/header_componente';
 import FooterComponente from "../../../componentes/footer_componente";
 import Api from '../../../services/api';
 import { FaCalendarAlt } from "react-icons/fa";
+import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function Calendario() {
     var [ img, setImg] = useState([]);
@@ -52,6 +53,7 @@ export default function Calendario() {
         console.log('Data Término (local):', dataTermino);
         console.log('Dias de diferença:', diffDays);
         console.log('Array de datas:', datesArray);
+        console.log(datesArray)
         // criando o calendario na banco de ados.
         // 
         var cont = 0;
@@ -183,7 +185,13 @@ export default function Calendario() {
                                     tema, formato, legenda, };
                                 console.log(Data)
                                 await Api.post('enviarAprovacao', Data).then((resposne) => {
-                                    console.log(resposne);
+                                    console.log(resposne); 
+                                    let display = document.querySelector(`#_${conteudo.id}`);
+                                    display.style.display = 'none'
+                                
+                                    const audio = new Audio(clickSound);
+                                    audio.volume = 1;
+                                    audio.play();
 
                                 }).catch((Erro) => {
                                     console.log("erro interno");
@@ -191,7 +199,7 @@ export default function Calendario() {
                             };
                         }
                         return(
-                            <div className="contentpublication" key={index}>
+                            <div className="contentpublication" id={`_${conteudo.id}`} key={index}>
                 
                                 <div className="dataContent">
                                     <FaCalendarAlt size={20}/>

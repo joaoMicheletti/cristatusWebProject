@@ -46,3 +46,11 @@
     font-weight: 600;
     color: red;
 }
+.conteudoAprovacao {
+    background-color: blueviolet;
+    width: 90%;
+    margin-left: 05%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
