@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import {React, useState } from "react";
 import Api from '../../../services/api';
 import './styles.css';
 import { useNavigate } from "react-router-dom";
@@ -8,12 +8,13 @@ export default function LoginUser() {
     // Coloque os hooks useState fora da função Login
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
+    
 
     // Função de login
     async function Login(e) {
         e.preventDefault(); // Previne o comportamento padrão de envio do formulário
         // Aqui você pode adicionar lógica para autenticação real
-        if(use === "" || pass === ""){
+        if(user === "" || pass === ""){
             document.querySelector('.alerta_login').innerHTML ='* Preencha todos os campos.'
 
         } else {
@@ -25,7 +26,7 @@ export default function LoginUser() {
             await Api.post('/loginUser', Data).then((response) => {
                 var Response = response.data;
                 console.log('aqui:', Response.res)
-                if(Response.res === 'User not found!'){
+                if(Response.res === 'Usuário ou Senha incorreto!'){
                     document.querySelector('.alerta_login').innerHTML ='Usuário não encontrado.'
                 } else {
                     sessionStorage.setItem("token", Response.res);                    

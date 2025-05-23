@@ -1,10 +1,10 @@
-import React from "react";
 import HeaderComponente from "../../../componentes/header_componente";
 import FooterComponente from "../../../componentes/footer_componente";
 import './styles.css';
 import { FaCalendarAlt } from "react-icons/fa";
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Api from "../../../services/api";
 
 
 
@@ -12,7 +12,24 @@ export default function AnaliseCliente(){
     // usaremos useeffectr para ao caregar a pagina buscar todas as publicações no banco dce dados.
     var [ img, setImg] = useState([]); // armazenar os arquivos 
     var [ajuste, setAjuste] = useState(""); // armazenar o ajuste a ser realizado na aplicação.
+    let Data = { tokenUser: sessionStorage.getItem('token')}
+    const [publicacao, setPublicacao]= useState([]);
+    console.log(Data)
 
+    useEffect(() => {
+    Api.post('/buscarClineteAprovado', Data)
+        .then(({ data }) => {
+        // confere que veio um array
+        console.log(data)
+        let res =  data.res
+        setPublicacao(res);
+        
+        })
+        .catch(() => {
+        alert('Erro interno.');
+        });
+    }, []); 
+    console.log(publicacao)
     // funcoinalidade para dentro do .map ao renderizar cada elemento 
     //função para mostrar o campo onde o usuario pode solicitar os ajustes da publicação
     async function updateContent() {
