@@ -26,7 +26,10 @@ export default function Dashboard() {
 
     const cards = [
         { img: _07, link: "createContent", description: "Create Content" },
-        { img: _07, link: "aprovacao", description: "aprovação de conteudo" },
+        { img: _07, link: "updateMaterial", description: "Atualização de Material" },
+        { img: _07, link: "aprovacao", description: "Aprovação de conteudo" },
+        { img: _07, link: "solicitacoes", description: "Ajustes Solicitados"},
+        { img: _07, link: "chave", description: "Cahve de acesso "}
         
         
     ];
@@ -59,16 +62,16 @@ export default function Dashboard() {
 
                     }
                     return(
-                        <div className="card" key={index}>
-                        <div onClick={redirect} className="card-img">
-                            <img src={card.img} alt={`Card ${index + 1}`} className="card-img-inner" />
+                        <div className="cardDashCrister" key={index}>
+                            <div onClick={redirect} className="card-img">
+                                <img src={card.img} alt={`Card ${index + 1}`} className="card-img-inner" />
+                            </div>
+                            <p  className="card-description">{card.description}</p>
                         </div>
-                        <p  className="card-description">{card.description}</p>
-                    </div>
                     )
                 })}
-            </section>
-            <FooterComponente />
+            </section>-
+            
         </>
     );
 }

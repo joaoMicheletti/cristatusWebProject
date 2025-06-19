@@ -1,15 +1,6 @@
 #sectionAprovacao {
+    
     margin-top: 50px;
-}
-#selectC {
-    color: white;
-}
-#selectC select {
-    height: 35px;
-    border-radius: 5px;
-}
-.dataCronogramaSelect label{
-    color: white;
 }
 .containerAprovacao {
     margin-top: 50px;
@@ -49,7 +40,7 @@
 #Alerta{
     font-size: 20px;
     font-weight: 600;
-    color: red;
+    color: rgb(43, 24, 24);
 }
 .conteudoAprovacao {
     width: 90%;
@@ -61,12 +52,13 @@
 .BtnAprovaçãoCalendario {
     margin-top: 10px;
 }
-#aprovacaoAprovar{
-    border-radius: 5px;
+.aprovacaoAprovar{
     text-align: center;
-    width: 50%;
+    width: 60%;
     height: 30px;
-    margin-left: 25%;
+    margin-left: 20%;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .BtnAprovaçãoCalendario input {
     cursor: pointer;
@@ -83,17 +75,50 @@
     margin-left: 10%;
     margin-bottom: 10px;
 }
-
-.areaLegenda  {
+.coteudoArquivos{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.coteudoArquivos button {
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 5px;
+    width: 100%;
+}
+#descricaoArte {
+    margin-top: 10px;
+    background-color: rgb(157, 170, 166);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: start;
+    word-wrap: break-word; 
+    margin-bottom: 10px;
+}
+.legendaPublicação  {
     text-align: start;
     word-wrap: break-word;   
 }
-.conteudoArteAprovacao {
+.redeImg { 
+    height: 200px;
+    padding: 10px; 
+    max-width: 100%;
     height: auto;
-    padding: 10px;
 }
-.art {
-    width: 90%;
+.imgREnder {
+    display: none;
+    width: 80%;
+    margin-left: 10%;
+}.rendervideo {
+    display: none;
+    width: 100%;
+}
+.carrossel {
+    background-color: rgb(80, 80, 126);
+    padding: 10px;
     height: auto;
-    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    display: none;
 }

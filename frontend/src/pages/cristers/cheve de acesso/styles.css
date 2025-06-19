@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#containerChave {
+    padding: 10px;
+    text-align: center;
+    height: 100vh;
+}
+#DivFormChave {
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+    margin-top: 25vh;
+    height: 50vh;
+    margin-left: 10%;
+    background-color: rgb(185, 174, 174);
+    text-align: start;
+}
+#DivFormChave h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+#DivFormChave input {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 35px;
+    border: coral 2px solid;
+    border-radius: 5px;
+    width: 100%;
+}
+#DivFormChave button {
+    width: 50%;
+    height: 35px;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+#DivFormChave p {
+    font-weight: 400;
+    text-align: center;
+    color: red;
+    margin-bottom: 10px;
+}

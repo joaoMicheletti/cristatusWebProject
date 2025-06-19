@@ -33,7 +33,7 @@ export default function CreateContent() {
           {users.map((u, index) => {
             function redirect() {
               localStorage.setItem('referenciaCliente', u.token);
-              history(`/calendario`);
+              history(`/updateMedias`);// direcionar para a pagina onde será possivel efetuar a atualização e e inserção deos materiasi tipom arte.
             }
             return (
               <div className="cardDashCrister" key={index}>
@@ -47,7 +47,6 @@ export default function CreateContent() {
           })}
         </div>
       </section>
-      <FooterComponente/>
     </>
   );
 }

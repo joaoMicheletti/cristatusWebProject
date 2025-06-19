@@ -25,15 +25,15 @@ export default function Dashboard() {
     ];
 
     const cards = [
+        { img:  _07, link: "manualAplication", description: "Manual da do aplicativo" },
         { img: _07, link: "analiseCliente", description: "Analise e liberação" },
         { img:  _07, link: "", description: "Relatorio de Métricas." },
         { img:  _07, link: "", description: " Kcickoff/acessos." },
 
         { img: _07, link: "", description: "ActionPlan"},
         { img:  _07, link: "", description: "Agenda de Eventos." },
-        { img:  _07, link: "", description: "Meu Plano." },
-
-        { img:  _07, link: "", description: "Conheça nossos Produtos." }
+        { img:  _07, link: "", description: "Conheça nossos Produtos." },
+        { img:  _07, link: "administrativo", description: "Administrativo" },
         
     ];
 
@@ -65,7 +65,7 @@ export default function Dashboard() {
 
                     }
                     return(
-                        <div className="card" key={index}>
+                        <div className="cardDashCrister" key={index}>
                         <div onClick={redirect} className="card-img">
                             <img src={card.img} alt={`Card ${index + 1}`} className="card-img-inner" />
                         </div>

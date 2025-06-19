@@ -165,11 +165,12 @@ export default function Calendario() {
                         let tema = ''; // armazenando o tema;
                         let formato = ''; // armazenando o valor do select 
                         let legenda = ''; // armazendando a Legenda da publicação;
+                        let descrição = ""; // armazenado a descrição da arte.
                         
                         
                         // mandar conteúdo para aprovação :
-                        // aprovação /mandar para o lead:
                         async function aprovedContent() {
+                            console.log(conteudo.dia, conteudo.mes, conteudo.ano)
                             if (tema === ''){
                                 alert('Defina o tema da Publicação!')
 
@@ -177,12 +178,18 @@ export default function Calendario() {
                                 alert('Selecione o Formato da Publicação!')
                             } else if(legenda === ''){
                                 alert("forneça a lengenda da publicação");
-                            } else {
+                            } else if(descrição === ''){
+                                alert('forneça a descrição para o deenvolvimento da arte')
+                            }else {
                                 
-                                // tratativas de aprovação/ com o backend + automação de publicação.
+                                // enviar para a atualização de conteudo, area destinada a editores para subir as artes da publicação.
                                 let Data = {
-                                    dia: conteudo.dia, mes: conteudo.mes, ano: conteudo.ano, tokenUser:localStorage.getItem('referenciaCliente'), aprovadoCristar: "aguardando",
-                                    tema, formato, legenda, };
+                                    dia: conteudo.dia, 
+                                    mes: conteudo.mes, 
+                                    ano: conteudo.ano, 
+                                    tokenUser:localStorage.getItem('referenciaCliente'), 
+                                    descricaoArte: descrição,
+                                    tema, formato, legenda, }; // falta mandar a descrição da arte"
                                 console.log(Data)
                                 await Api.post('enviarAprovacao', Data).then((resposne) => {
                                     console.log(resposne); 
@@ -213,6 +220,7 @@ export default function Calendario() {
                                             onChange={e=> tema = e.target.value }
                                         />
                                     </label>
+                                    <br/><br/>
                                 </div>
                         
                                 <div className="coteudoArte">
@@ -226,6 +234,12 @@ export default function Calendario() {
                                             <option value='video'>Vídeo</option>
                                         </select>
                                     </label>
+                                </div>
+                                <div className="descricaoArte">
+                                    <p>Descrição para arte</p>
+                                    <textarea rows={8} placeholder="  traga na arte elementos .etc"
+                                    onChange={e => descrição = e.target.value}
+                                    ></textarea>
                                 </div>
                         
                                 <div className="legendaCliente">
@@ -247,7 +261,7 @@ export default function Calendario() {
                                     </div>
                                 </div>
                                 <div className="BtnAprovação">
-                                    <buttonn type="buttonn" onClick={aprovedContent} className="btnAprova" >Aprovação</buttonn>
+                                    <buttonn type="buttonn" onClick={aprovedContent} className="btnAprova" >Encaminhar</buttonn>
                                 </div>
                             </div>
                         )
@@ -255,7 +269,6 @@ export default function Calendario() {
                     
                 </div>
             </section>
-            <FooterComponente />
         </>
     );
 };

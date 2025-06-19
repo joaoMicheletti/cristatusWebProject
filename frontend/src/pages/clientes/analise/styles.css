@@ -1,23 +1,23 @@
 #analiseClienteSEction {
     padding-top: 50px;
-    background-color:  aqua;
 }
 #containerAnaliseCliente {
-    width: 90%;
-    margin-left: 5%;
-    background-color: rgb(84, 84, 190);
+    width: 100%;
+    margin-left: 0%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 .contentpublication {
-     flex: 1 1 calc(33.333% - 40px); /* três colunas menos gap total */
-  max-width: calc(33.333% - 40px);
-  min-width: 280px;               /* impede ficar muito estreito */
-  margin-bottom: 50px;
-  border-radius: 5px;
-  background-color: bisque;
-  box-sizing: border-box;
+    background-color: #424568;
+    padding: 10px;
+    flex: 1 1 calc(33.333% - 40px); /* três colunas menos gap total */
+    max-width: calc(33.333% - 40px);
+    min-width: 280px;               /* impede ficar muito estreito */
+    margin-bottom: 50px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    
 }
 .dataContent {
     width: 100%;
@@ -32,33 +32,31 @@
 .txtDataContent {
     font-weight: 900;
 }
-.coteudoArte{
-    background-color: rgb(150, 85, 85);
+.clietneFormato{
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    padding: 10px;
     margin-bottom: 10px;
 }
-.seta{
-    margin-top: 80px;
-    cursor: pointer;
-}
-.art {
+.coteudoArteCliente {
     background-color: azure;
-    width: 80%;
+    width: 100%;
+    margin-left: 0%;
     height: 200px;
     border-radius: 5px;
+    padding: 10px;
+}
+.artCliente {
+    height: 100%;
+    background-color: aqua;
+    width: 100%;
 }
 .legendaCliente{
-    background-color: rgb(136, 136, 39);
     border-radius: 5px;
     padding: 10px;
     line-height: 20px;
     margin-bottom: 10px;
 }
 .roteiroStoryCliente {
-    background-color: brown;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
@@ -74,7 +72,7 @@
     background-color: aqua;
 }.sendMoviBtn {
     margin-top: 10px;
-    background-color: blue;
+    background-color: rgb(57, 57, 59);
     width: 80%;
     margin-left: 10%;
     text-align: center;
@@ -86,13 +84,12 @@
     font-weight: 600;
 }
 .BtnAprovação {
-    background-color: rgb(121, 121, 189);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 .btnAprova {
-    background-color: aquamarine;
+    background-color: #63657a;
     width: 40%;
     text-align: center;
     border-radius: 5px;
@@ -118,13 +115,7 @@
     cursor: pointer;
     text-decoration: underline;
 }
-.responseSendMovi {
-    color: brown;
-    margin-bottom: 10px;
-    font-weight: 900;
-}
-.responseSendUpdate{
-    color: brown;
-    margin-bottom: 10px;
-    font-weight: 900;
+.areaLegenda  {
+    text-align: center;
+    word-wrap: break-word;   
 }

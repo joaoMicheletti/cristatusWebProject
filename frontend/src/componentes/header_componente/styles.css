@@ -12,7 +12,7 @@
     margin-left: 20px;
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 #linkHeaderComponente:hover{
     font-weight: 600;
@@ -21,6 +21,7 @@
     float: right;
     margin-right: 20px;
     cursor: pointer;
+    color: rgb(255, 255, 255);
 }
 #notificationCliente:hover {
     opacity: 50%;
@@ -29,7 +30,9 @@
     float: right;
     margin-right: 20px;
     cursor: pointer;
+    color: rgb(255, 255, 255);
 }
+
 .notificationCliente:hover {
     opacity: 50%;
 }

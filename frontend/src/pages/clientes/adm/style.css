@@ -1,0 +1,65 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+#AdmCliente {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-top: 40px;
+}
+#tituloAdmCliente {
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 1px 2px 5px;
+    color: white;
+}
+#divAcessos {
+    margin-left: 10%;
+    width: 80%;
+    text-align: center;
+}
+.inputAcesso {
+    width: 50%;
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#resultsAcessos {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.acesso {
+    background-color: bisque;
+    width: 40%;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.acesso p {
+    padding: 5px;
+}
+@media(max-width: 800px){
+    .inputAcesso {
+    width: 80%;
+    }
+    #divAcessos {
+    margin-left: 0%;
+    width: 100%;
+    text-align: center;
+}
+    #resultsAcessos {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 0%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+}

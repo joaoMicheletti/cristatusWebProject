@@ -19,7 +19,7 @@
     transition: transform 0.5s ease;
 }
 
-button {
+.prev {
     position: absolute;
     top: 50%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -29,13 +29,22 @@ button {
     cursor: pointer;
     z-index: 10;
 }
-
-button.prev {
+.next {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+.prev {
     left: 10px;
     transform: translateY(-50%);
 }
 
-button.next {
+.next {
     right: 10px;
     transform: translateY(-50%);
 }
@@ -48,7 +57,7 @@ button.next {
     margin: 20px;
 }
 
-.card {
+.cardDashCriste {
     cursor: pointer;
     width: 300px;
     margin: 10px;

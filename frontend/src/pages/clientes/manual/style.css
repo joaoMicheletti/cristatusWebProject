@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#manualContainer {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    padding: 10px;
+}
+#tituloManual{
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 1px 2px 5px;
+    color: white;
+}
+.divTototial {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.description{
+    font-size: 15px;
+    font-weight: 400;
+    color: white;
+    font-weight: 400;
+}
+.videoTutorial {
+    width: 80%;
+    margin-left: 10%;
+    background-color: blueviolet;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 200px;
+    text-align: center;
+    font-size: 30px;
+    color: wheat;
+    text-decoration: underline;
+}

@@ -4,11 +4,11 @@ import FooterComponente from "../../../componentes/footer_componente";
 import './style.css';
 import Api from '../../../services/api';
 import { FaCalendarAlt } from "react-icons/fa";
-import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
-import clickSound from '../../../assets/music/aproved.mp3'
+import clickSound from '../../../assets/music/aproved.mp3';
 
 export default function AprovacaoConteudo() {
-  // 1. cliente inicia como array
+  // índice atual para cada carrossel (por item.id)
+  const URL = "http://127.0.0.1:3333/image/";
   const [cliente, setCliente] = useState([]);
   const [inicio, setInicio] = useState('');
   const [fim, setFim] = useState('');
@@ -19,38 +19,29 @@ export default function AprovacaoConteudo() {
     Api.get("getUser")
       .then(response => {
         const data = response.data.res;
-        // 2. se vier objeto, converte para array
         const arr = Array.isArray(data) ? data : Object.values(data);
-        console.log(arr)
         setCliente(arr);
       })
       .catch(err => console.error("Erro ao buscar clientes:", err));
   }, []);
 
   async function BuscarCalendario() {
-    document.querySelector("#Alerta").innerText = "";
+    const alertaEl = document.getElementById("Alerta");
+    if (alertaEl) alertaEl.innerText = "";
     if (!selecionado || selecionado === 'selecione') {
-      document.querySelector("#Alerta").innerText = "Selecione um Cliente!";
+      if (alertaEl) alertaEl.innerText = "Selecione um Cliente!";
       return;
     }
     if (!inicio || !fim) {
-      document.querySelector("#Alerta").innerText = "Defina as datas!";
-      //return;
+      if (alertaEl) alertaEl.innerText = "Defina as datas!";
     }
-
     try {
-      const { data } = await Api.post('buscarAprovacao', {
-        inicio,
-        fim,
-        tokenUser: selecionado
-      });
-      console.log(data)
-      console.log(calendario)
+      const { data } = await Api.post('buscarAprovacao', { inicio, fim, tokenUser: selecionado });
       if (typeof data === 'string') {
-        document.querySelector("#Alerta").innerText = 'selecione uma data';
+        if (alertaEl) alertaEl.innerText = 'Selecione uma data válida';
       } else {
         setCalendario(data);
-        console.log(calendario)
+        console.log(data)
       }
     } catch (err) {
       console.error(err);
@@ -59,61 +50,44 @@ export default function AprovacaoConteudo() {
 
   return (
     <>
-      <HeaderComponente/>
+      <HeaderComponente />
       <section id="sectionAprovacao">
-        <h1>falta definir a função de solicitar ajusta nao esqueça</h1>
         <div className="containerAprovacao">
           <div className="selectClient">
-            <label>
-              Selecionar Cliente:<br/>
-              <select
-                value={selecionado}
-                onChange={e => setSelecionado(e.target.value)}
-              >
+            <label id="selectC">
+              Selecionar Cliente:<br />
+              <select value={selecionado} onChange={e => setSelecionado(e.target.value)}>
                 <option value='selecione'>— Selecione o Cliente —</option>
-                {/* 3. mapeia só se for array */}
-                {Array.isArray(cliente) && cliente.map(item => (
-                  <option
-                    key={item.id}
-                    value={item.token}
-                  >
-                    {item.user}
-                  </option>
+                {cliente.map(c => (
+                  <option key={c.id} value={c.token}>{c.user}</option>
                 ))}
               </select>
             </label>
           </div>
           <div className="dataCronogramaSelect">
-            <label>
-              Data de início:<br/>
-              <input
-                type="date"
-                value={inicio}
-                onChange={e => setInicio(e.target.value)}
-              />
+            <label>Data de início:<br />
+              <input type="date" value={inicio} onChange={e => setInicio(e.target.value)} />
             </label>
-            <label>
-              Data de término:<br/>
-              <input
-                type="date"
-                value={fim}
-                onChange={e => setFim(e.target.value)}
-              />
+            <label>Data de término:<br />
+              <input type="date" value={fim} onChange={e => setFim(e.target.value)} />
             </label>
           </div>
           <div className="btnDiv">
             <p id="Alerta"></p>
-            <input
-              type="button"
-              className="bntBuscarCronograma"
-              value='Buscar'
-              onClick={BuscarCalendario}
-            />
+            <button className="bntBuscarCronograma" onClick={BuscarCalendario}>Buscar</button>
           </div>
         </div>
 
         <div className="conteudoAprovacao">
           {calendario.map((item) => {
+            let files = [];
+            try {
+              files = JSON.parse(item.nomeArquivos);
+            } catch {
+              files = [];
+            }
+            console.log(files)
+            
             //aprovar o material:
             /**
              * ao aprovar o material, no banoc de dados sera inserido na coluna aprovadoCrister o valor "aprovado"
@@ -126,8 +100,11 @@ export default function AprovacaoConteudo() {
                 tokenUser: item.tokenUser,
                 aprovadoCrister: "aprovado",
                };
-              await Api.post('/aprovarParaCiente', Data)
+              await Api.post('aprovarParaCliente', Data)
+              
               .then((response) => {
+                console.log(response,'<<><><<><><><<<>>>>>')
+                
                 if(response.data.res === 1){
                   let display = document.querySelector(`#_${item.id}`);
                   display.style.display = 'none'
@@ -135,12 +112,53 @@ export default function AprovacaoConteudo() {
                   const audio = new Audio(clickSound);
                   audio.volume = 1;
                   audio.play();
+                } else if(response.data.res === 0){
+                  alert('conteudo imcompleto para ser aprovado!')
+                } else {
+                  alert('Erro ao enviar o material para o cliente, sertifique-se de que o conteudo está completo.')
                 }
               }).catch((erro) => {
                 console.log(erro);
               });              
             }
-            
+            //solictar ajuste ao Solcial mediua 
+            async function solicitarAjuste() {
+              const ajusteEl = document.querySelector(`#_-_${item.id}`).value;
+
+              if(ajusteEl === ''){
+                alert('Não esqueça de listar os ajustes!');
+                return;
+              }
+
+              const Data = {
+                tokenUser: item.tokenUser,
+                dia: item.dia,
+                mes: item.mes,
+                ano: item.ano,
+                ajusteCrister: ajusteEl,
+              };
+
+              console.log('Dados enviados:', Data);
+
+              try {
+                const response = await Api.post('/ajusteGestao', Data);
+                console.log('Resposta do servidor:', response);
+
+                if (response.data.res === 1) {
+                  alert('Ajuste solicitado com sucesso!');
+                  const audio = new Audio(clickSound);
+                  audio.volume = 1;
+                  audio.play();
+                  let display = document.querySelector(`#_${item.id}`);
+                  display.style.display = 'none'
+                } else {
+                  //alert('Erro ao solicitar ajuste.');
+                }
+              } catch (error) {
+                console.error('Erro na solicitação de ajuste:', error);
+                alert('Erro ao enviar ajuste. Verifique sua conexão ou fale com o suporte.');
+              }
+            }            
             return(
 
               <div className="contentpublication" id={`_${item.id}`}  key={item.id} >
@@ -159,6 +177,7 @@ export default function AprovacaoConteudo() {
 
                 </div>
 
+
                 <div className="coteudoArte">
                     <label>
                         Formato:
@@ -166,19 +185,66 @@ export default function AprovacaoConteudo() {
                     </label>
                 </div>
 
-                <div className="coteudoArte">
-                  <MdNavigateBefore id={`_${item.id}`} className="seta" size={30} />
-                  <div className="art">art publicação here</div>                            
-                  <MdNavigateNext id={`__${item.id}`} className="seta" size={30} />
+                <div className="conteudoArteAprovacao">
+                  {/* Estático */}
+                  {item.formato === 'estatico' && (
+                    <img src={`${URL}${item.nomeArquivos}`} alt="arte estática" className="art" />
+                  )}
+
+                  {/* Vídeo */}
+                  {item.formato === 'video' && (
+                    <video src={`${URL}${item.nomeArquivos}`} controls muted className="art" />
+                  )}
+
+                  <div id={`_carrossel_${item.id}`}>
+                    <p>.</p>
+                  </div>
+
+                  {/* Carrossel */}
+                  {item.formato === 'carrossel' && files.length > 0 && (
+                    <div
+                      id={`carrossel_${item.id}`}
+                      className="Carrossel flex items-center"
+                      style={{ alignItems: 'center' }}
+                      >
+                      {/* renderiza todos os arquivos do carrossel */}
+                      {files.map(file => {
+                        const ext = file.split('.').pop().toLowerCase();
+                        const src = URL + file;
+                        if (['mp4', 'webm', 'ogg'].includes(ext)) {
+                          return (
+                            <video
+                              key={file}
+                              src={src}
+                              controls
+                              className="media-item video mx-2"
+                              style={{ maxWidth: '100%' }}
+                            />
+                          );
+                        } else {
+                          return (
+                            <img
+                              key={file}
+                              src={src}
+                              alt={file}
+                              className="media-item image mx-2"
+                              style={{ maxWidth: '100%' }}
+                            />
+                          );
+                        }
+                      })}
+                    </div>
+                  )}
+
                 </div>
-        
-                
-        
+
                 <div className="legendaCliente">
                     <h3>Legenda:</h3>
-                    <p  className="legendaPublicação">
-                      {item.legenda}
-                    </p>
+                    <div className="areaLegenda">
+                      <p  className="legendaPublicação">
+                        {item.legenda}
+                      </p>
+                    </div>
                 </div>
 
                 <div className="roteiroStoryCliente">
@@ -190,12 +256,16 @@ export default function AprovacaoConteudo() {
                             anexar PDF de roteiro, do "DIA"
                             <input  className="inputSend" type="file"/>
                         </label>
-                        <buttonn type='buttonn'  className="sendMoviBtn">Enviar</buttonn>
+                        <button type='buttonn'  className="sendMoviBtn">Enviar</button>
                     </div>
                 </div>
 
-                <div className="BtnAprovação">
-                    <buttonn onClick={aprovarParaCliente} type="buttonn"  className="btnAprova" >Aprovar</buttonn>
+                <div className="BtnAprovaçãoCalendario">
+                    <button id="aprovacaoAprovar" onClick={aprovarParaCliente} type="butonn">Aprovar</button>
+                </div> 
+                <div id="AjusteCrister" className="BtnAprovaçãoCalendario">
+                  <textarea id={`_-_${item.id}`} className="areaAjusteCliente" placeholder=" Liste os ajustes"></textarea>
+                   <button onClick={solicitarAjuste} type="buttonn"   className="aprovacaoAprovar">solicitar ajuste</button>
                 </div>
               </div>
 
@@ -206,7 +276,6 @@ export default function AprovacaoConteudo() {
           
         </div>
       </section>
-      <FooterComponente/>
     </>
   );
 }

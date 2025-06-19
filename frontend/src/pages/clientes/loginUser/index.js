@@ -23,7 +23,7 @@ export default function LoginUser() {
             pass
             };
             //enviar para a api e autenticar usuario
-            await Api.post('/loginUser', Data).then((response) => {
+            await Api.post('loginUser', Data).then((response) => {
                 var Response = response.data;
                 console.log('aqui:', Response.res)
                 if(Response.res === 'Usuário ou Senha incorreto!'){
