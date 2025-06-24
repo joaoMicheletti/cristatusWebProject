@@ -69,7 +69,8 @@
     text-decoration: none;
     height: 200px;
     width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .card-img-inner {

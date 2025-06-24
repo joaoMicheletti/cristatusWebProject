@@ -17,6 +17,7 @@ import UpdateMaterial from './pages/cristers/updateMaterial/index.js';
 import UpdateMedias from './pages/cristers/updatemedias/index.js';
 import Solicitacoes from './pages/cristers/solicitacoes/index.js';
 import ChaveAcesso from './pages/cristers/cheve de acesso/index.js';
+import RegisterCliente from './pages/cristers/cadastroCliente/index.js';
 // <Route path='*' element={<NotFound/>}/>
 export default function Rotas(){
     return(
@@ -39,6 +40,7 @@ export default function Rotas(){
                 <Route path='aprovacao' element={<Aprovacao/>} />
                 <Route path='solicitacoes' element={<Solicitacoes/>} />
                 <Route path='chave' element={<ChaveAcesso/>}/>
+                <Route path='cadUSer' element={<RegisterCliente/>}/>
             </Routes>
         </Router>
     )

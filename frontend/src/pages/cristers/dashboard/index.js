@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import './styles.css';
 import HeaderComponente from "../../../componentes/header_componente";
-import FooterComponente from "../../../componentes/footer_componente";
 import _01 from '../../../assets/capa_Dashboard/01.png';
 import _02 from '../../../assets/capa_Dashboard/02.png';
 import _03 from '../../../assets/capa_Dashboard/03.png';
 import _04 from '../../../assets/capa_Dashboard/04.png';
 import _05 from '../../../assets/capa_Dashboard/05.png';
 import _06 from '../../../assets/capa_Dashboard/06.png';
-import _07 from '../../../assets/capa_Dashboard/07.png';
+import _07 from '../../../assets/capa_Dashboard/07.webp';
+import Criacao from  '../../../assets/capa_Dashboard/criacao.webp';
+import Update from '../../../assets/capa_Dashboard/update.webp'
+import Aprovacao from '../../../assets/capa_Dashboard/aprovacao.webp'
+import Ajustes  from '../../../assets/capa_Dashboard/ajustes.webp';
+import Chave from '../../../assets/capa_Dashboard/chave.webp';
+import Register from '../../../assets/capa_Dashboard/register.webp';
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
@@ -25,11 +30,12 @@ export default function Dashboard() {
     ];
 
     const cards = [
-        { img: _07, link: "createContent", description: "Create Content" },
-        { img: _07, link: "updateMaterial", description: "Atualização de Material" },
-        { img: _07, link: "aprovacao", description: "Aprovação de conteudo" },
-        { img: _07, link: "solicitacoes", description: "Ajustes Solicitados"},
-        { img: _07, link: "chave", description: "Cahve de acesso "}
+        { img: Criacao, link: "createContent", description: "Create Content" },
+        { img: Update, link: "updateMaterial", description: "Atualização de Material" },
+        { img: Aprovacao, link: "aprovacao", description: "Aprovação de conteudo" },
+        { img: Ajustes, link: "solicitacoes", description: "Ajustes Solicitados"},
+        { img: Chave, link: "chave", description: "Cahve de acesso "},
+        { img: Register, link: "cadUSer", description: "Cadastro de Cliente "}
         
         
     ];
@@ -70,8 +76,7 @@ export default function Dashboard() {
                         </div>
                     )
                 })}
-            </section>-
-            
+            </section>            
         </>
     );
 }

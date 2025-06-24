@@ -1,36 +1,45 @@
 import React, { use, useState } from "react";
 import Api from '../../../services/api';
-import './styles.css';
+//import './styles.css';
 import { useNavigate } from "react-router-dom";
 import logoLogin from '../../../assets/image/logoLogin.webp'
 
-export default function LoginUser() {
+export default function RegisterCliente() {
     const Hystory = useNavigate();
     // Coloque os hooks useState fora da função Login
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
+    const [cPass, setCPass] = useState('');
+    const [ idPerfil, setIdPerfil] = useState('');
 
     // Função de login
     async function Login(e) {
         e.preventDefault(); // Previne o comportamento padrão de envio do formulário
         // Aqui você pode adicionar lógica para autenticação real
-        if(use === "" || pass === ""){
+        if(use === "" || pass === "" || cPass === "" || idPerfil === "" ){
             document.querySelector('.alerta_login').innerHTML ='* Preencha todos os campos.'
 
+        } else if(cPass != pass){
+            document.querySelector('.alerta_login').innerHTML ='As senhas presisam ser iguais '
         } else {
+            let data = new Date()
             const Data = {
             user,
-            pass
+            pass, 
+            idPerfil: idPerfil,
+            initPlano: `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`
             };
+            console.log(Data)
             //enviar para a api e autenticar usuario
-            await Api.post('/loginCrister', Data).then((response) => {
+            await Api.post('/registerUser', Data).then((response) => {
                 var Response = response.data;
                 console.log(Response);
-                if(Response.res === 'User not found!'){
-                    document.querySelector('.alerta_login').innerHTML ='Usuário não encontrado.'
+                if(Response.res === 'Registrado com sucesso!'){
+                    alert(response.data.res)
+                    Hystory('/dashboardCliente')
                 } else {
-                    sessionStorage.setItem("tokenCrister", Response.res);                    
-                    Hystory('/dashboardCrister')
+                    console.log(response.data.res)
+                    alert(response.data.res);
                 }
                 console.log(Response.res )
             }).catch((erro) =>{
@@ -46,7 +55,8 @@ export default function LoginUser() {
                 <div id="divformularioLogin">
                     <form id="formularioLoginUser">
                         <img id="logoLogin" src={logoLogin} alt="logo img" />
-                        <input
+                        <input 
+                            
                             onChange={(e) => setUser(e.target.value)}
                             className="inputLoginCrister"
                             placeholder="  *User"
@@ -54,12 +64,31 @@ export default function LoginUser() {
                             value={user}
                             required
                         />
-                        <input
+                        <input 
+                            
+                            onChange={(e) => setIdPerfil(e.target.value)}
+                            className="inputLoginCrister"
+                            placeholder="  *ID do perfil Comercial "
+                            type="text"
+                            value={idPerfil}
+                            required
+                        />
+                        <input 
+                            
                             onChange={(e) => setPass(e.target.value)}
                             className="inputLoginCrister"
-                            placeholder="  *Password"
+                            placeholder="  *Senha"
                             type="password"
                             value={pass}
+                            required
+                        />
+                        <input 
+                            
+                            onChange={(e) => setCPass(e.target.value)}
+                            className="inputLoginCrister"
+                            placeholder="  *Confirmar Senha"
+                            type="password"
+                            value={cPass}
                             required
                         />
                         <br/>

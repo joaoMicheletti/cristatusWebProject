@@ -1,7 +1,6 @@
 import {React,   useEffect, useState } from "react";
 import HeaderComponente from "../../../componentes/header_componente";
-import FooterComponente from "../../../componentes/footer_componente";
-import _07 from '../../../assets/capa_Dashboard/07.png';
+import _07 from '../../../assets/capa_Dashboard/07.webp';
 import './styles.css';
 import { useNavigate } from "react-router-dom";
 import Api from '../../../services/api';
@@ -47,7 +46,6 @@ export default function CreateContent() {
           })}
         </div>
       </section>
-      <FooterComponente/>
     </>
   );
 }

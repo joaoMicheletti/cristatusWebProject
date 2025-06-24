@@ -1,12 +1,9 @@
 import HeaderComponente from "../../../componentes/header_componente";
-import FooterComponente from "../../../componentes/footer_componente";
 import './styles.css';
 import { FaCalendarAlt } from "react-icons/fa";
-import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import { useState, useEffect } from "react";
 import Api from "../../../services/api";
 import clickSound from '../../../assets/music/aproved.mp3';
-
 
 
 export default function AnaliseCliente(){
@@ -38,7 +35,6 @@ export default function AnaliseCliente(){
     return(
         <>  
             <HeaderComponente/>
-
             <section id="analiseClienteSEction">
                 
                 <div id="containerAnaliseCliente">
@@ -104,12 +100,17 @@ export default function AnaliseCliente(){
                             console.log('aprovadooooooooo');
                             // tratativas de aprovação/ com o backend + automação de publicação.
                             // rota para determinar a publicação como aprovada pelo cliente.
-                            //await Api.post('aprovacaoCliente', Data).then((response) => {
+                            const Data = {
+                                id: item.id,
+                                tokenUser: item.tokenUser
+                            }
+                            await Api.post('/aprovacaoCliente', Data).then((response) => {
+                                console.log(response.data.respostaMetaPublicacao)
 
-                            //}).catch((Erro) => {
-                              //  console.log(console.error());
+                            }).catch((Erro) => {
+                                console.log(console.error());
                                 
-                           // })
+                            })
                             /**
                             let display = document.querySelector(`#_-_${item.id}`);
                             display.style.display = 'none'

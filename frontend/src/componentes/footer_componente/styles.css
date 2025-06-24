@@ -1,0 +1,38 @@
+#FooterComponent {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+#ContainerFooter {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#iconeInsta {
+    width: 30px;
+}
+#CS {
+    width: 30px;
+}
+@media(max-width: 800px) {
+    #ContainerFooter {
+        width: 80%;
+        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+    }
+    #iconeInsta {
+        margin-top: 30px;
+        width: 30px;
+    }
+    #CS {
+        width: 100px;
+    }
+    #direitos {
+        margin-top: 30px;
+        font-weight: 600;
+    }
+    
+}

@@ -1,28 +1,33 @@
 #sectionFormulario {
     height: 100vh;
     width: 100%;
+    background-image: url(../../../assets//image/fundo.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-#divformulario {
+#divformularioLogin {
     margin-left: 10%;
-    margin-top: auto;
     width: 80%;
     display: flex;
     flex-direction: column;
-    padding-top: 200px;
+    height: 100vh;
 }
-#formulario{
-    width: 90%;
-    margin-left: 5%;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: rgb(241, 248, 248);
+#formularioLoginUser{
+    width: 50%;
+    margin-left: 25%;
+    height: 60vh;
+    margin-top: 20vh;
+    border-radius: 30px;
+    background-color: rgba(36, 39, 39, 0.322);
     box-shadow: 3px 3px 10px black;
     cursor: pointer;
 }
-#formulario:hover {
-    width: 100%;
-    margin-left: 0%;
-    box-shadow: 3px 3px 15px black;
+#logoLogin {
+    margin-top: 30px;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom: 30px;
 }
 .titleloginUser {
     text-align: center;
@@ -34,15 +39,17 @@
     margin-left: 10%;
     border-radius: 5px;
     height: 35px;
-    margin-bottom: 20px;
+    margin-bottom: 20px;background-color: rgba(0, 0, 0, 0.555);
 }
 #BtnLoginUser {
-    background-color: aqua;
+    background: linear-gradient(90deg, #004aad, #cb6ce6);
     width: 50%;
     height: 40px;
     border-radius: 5px;
     margin-left: 25%;
     margin-bottom: 20px;
+    color: white;
+    font-weight: 700;
 }
 .alerta_login{
     text-align: center;
@@ -50,4 +57,24 @@
     font-size: 18px;
     font-weight: 600;
     color: red;
+}
+
+@media (max-width: 800px){
+    #formularioLoginUser{
+        width: 90%;
+        margin-left: 5%;
+        height: 50vh;
+        margin-top: 25vh;
+        border-radius: 30px;
+        background-color: rgba(36, 39, 39, 0.322);
+        box-shadow: 3px 3px 10px black;
+        cursor: pointer;
+        }
+    #logoLogin {
+        margin-top: 30px;
+        width: 50%;
+        margin-left: 25%;
+        margin-bottom: 30px;
+    }
+
 }

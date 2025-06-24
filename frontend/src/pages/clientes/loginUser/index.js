@@ -2,6 +2,7 @@ import {React, useState } from "react";
 import Api from '../../../services/api';
 import './styles.css';
 import { useNavigate } from "react-router-dom";
+import logoLogin from '../../../assets/image/logoLogin.webp'
 
 export default function LoginUser() {
     const Hystory = useNavigate();
@@ -42,9 +43,9 @@ export default function LoginUser() {
     return (
         <>
             <section id="sectionFormulario">
-                <div id="divformulario">
-                    <form id="formulario">
-                        <h1 className="titleloginUser">Crister Login</h1>
+                <div id="divformularioLogin">
+                    <form id="formularioLoginUser">
+                        <img id="logoLogin" src={logoLogin} alt="logo img" />
                         <input
                             onChange={(e) => setUser(e.target.value)}
                             className="inputLoginCrister"

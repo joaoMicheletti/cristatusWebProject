@@ -8,7 +8,11 @@ import _03 from '../../../assets/capa_Dashboard/03.png';
 import _04 from '../../../assets/capa_Dashboard/04.png';
 import _05 from '../../../assets/capa_Dashboard/05.png';
 import _06 from '../../../assets/capa_Dashboard/06.png';
-import _07 from '../../../assets/capa_Dashboard/07.png';
+import Manual from '../../../assets/capa_Dashboard/07.webp'; // manuao arte 
+import Analise from '../../../assets/capa_Dashboard/analise.webp'; // analise
+import ADM from '../../../assets/capa_Dashboard/adm.webp'; //adm image
+import Agenda from '../../../assets/capa_Dashboard/eventos.webp'// eventos img 
+import Metricas from '../../../assets/capa_Dashboard/metricas.webp'; // relatioro img 
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
@@ -25,15 +29,12 @@ export default function Dashboard() {
     ];
 
     const cards = [
-        { img:  _07, link: "manualAplication", description: "Manual da do aplicativo" },
-        { img: _07, link: "analiseCliente", description: "Analise e liberação" },
-        { img:  _07, link: "", description: "Relatorio de Métricas." },
-        { img:  _07, link: "", description: " Kcickoff/acessos." },
+        { img:  Manual, link: "manualAplication", description: "Manual da do aplicativo" },
+        { img: Analise, link: "analiseCliente", description: "Analise e liberação" },
+        { img:  Metricas, link: "", description: "Relatorio de Métricas." },
 
-        { img: _07, link: "", description: "ActionPlan"},
-        { img:  _07, link: "", description: "Agenda de Eventos." },
-        { img:  _07, link: "", description: "Conheça nossos Produtos." },
-        { img:  _07, link: "administrativo", description: "Administrativo" },
+        { img:  Agenda, link: "", description: "Agenda de Eventos." },
+        { img:  ADM, link: "administrativo", description: "Administrativo" },
         
     ];
 
@@ -74,7 +75,6 @@ export default function Dashboard() {
                     )
                 })}
             </section>
-            <FooterComponente />
         </>
     );
 }
