@@ -15,6 +15,7 @@ import Ajustes  from '../../../assets/capa_Dashboard/ajustes.webp';
 import Chave from '../../../assets/capa_Dashboard/chave.webp';
 import Register from '../../../assets/capa_Dashboard/register.webp';
 import { useNavigate } from "react-router-dom";
+import Api from '../../../services/api';
 
 export default function Dashboard() {
     const Hystory = useNavigate();
@@ -46,6 +47,50 @@ export default function Dashboard() {
         if (newIndex >= images.length) newIndex = 0;
         setCurrentIndex(newIndex);
     };
+    // Registrar o service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then(async serviceWorker => {
+            let subscription = await serviceWorker.pushManager.getSubscription();
+            console.log(subscription)
+
+            if(! subscription){
+                const publicKeyResponse = await Api.get('/notificationsKey')
+                subscription = await serviceWorker.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: publicKeyResponse.data.publicKey
+                });
+            }
+            console.log({subscription})
+            // verificar quem esta logado logado na aplicação usuário ou Crister ou visitante do nosso site.
+            let token = sessionStorage.getItem('token');
+            let tokenCrister = sessionStorage.getItem('tokenCrister');
+            const Data = {
+                token,
+                tokenCrister,
+                subscription
+            }
+            console.log(Data)
+            if(tokenCrister){
+                console.log(token)
+                let resgisterUser = await Api.post('/notificationsREgister', Data)
+                console.log(resgisterUser.data)
+            }
+        })
+    }
+    // Solicitar permissão para notificações
+    if ('Notification' in window) {
+        Notification.requestPermission().then(function(permission) {
+            console.log('Permissão de notificação:', permission);
+            if (permission === 'granted') {
+                // Aqui você pode disparar uma notificação de exemplo, se quiser:
+                /*new Notification('Notificações ativadas!', {
+                    body: 'Você receberá novidades da Cristatus 🚀',
+                    icon: '/icon.png' // Opcional: coloque o caminho do seu ícone
+                });*/
+            }
+        });
+    }
 
     return (
         <>
