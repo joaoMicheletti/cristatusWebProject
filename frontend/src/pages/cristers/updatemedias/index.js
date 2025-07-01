@@ -50,7 +50,6 @@ export default function AprovacaoConteudo() {
     <>
       <HeaderComponente/>
       <section id="sectionAprovacao">
-        <h1>falta definir a função de solicitar ajusta nao esqueça</h1>
         <div className="containerAprovacao">
           <div className="selectClient">
             
@@ -120,6 +119,7 @@ export default function AprovacaoConteudo() {
               // se sim execuar um loop para enviar um arquivo de cada ves ao backend.
               //variavel responsável pelo nome do arquivo.
               let nome = `${item.tokenUser}-${item.formato}-${item.dia}-${item.mes}-${item.ano}-`
+              console.log(files.length)
               if(files.length === 1){
                 const formDataUnico = new FormData(); // so para deixar o nome unico para cada necessidade.
                 //tipo do arquivo.
@@ -147,8 +147,9 @@ export default function AprovacaoConteudo() {
                     console.log(elemento2)
                     elemento2.style.display = 'none'
                     let elemento = document.querySelector(`#img_${item.id}`)
+                    console.log(elemento, 'elemento aqui pelo amor de deus ');
                     elemento.style.display = 'block'
-                    elemento.src = `http://127.0.0.1:3333/image/${response.data.filename}`
+                    elemento.src = `${URL}${response.data.filename}`
 
                   } else if(item.formato === 'video'){
                     let elemento2 = document.querySelector(`#img_${item.id}`)
@@ -156,7 +157,7 @@ export default function AprovacaoConteudo() {
                     elemento2.style.display = 'none'
                     let elemento = document.querySelector(`#video_${item.id}`)
                     elemento.style.display = 'block'
-                    elemento.src = `http://127.0.0.1:3333/image/${response.data.filename}`
+                    elemento.src = `${URL}${response.data.filename}`
                   }
 
                   
@@ -309,7 +310,7 @@ export default function AprovacaoConteudo() {
                   <p>{item.descricaoArte}</p>
                 </div>
                 <div className="redeImg">
-                  <img className="imgREnder" id={`img_${item.id}`} alt="teste" src=""/>
+                  <img className="imgREnder" id={`img_${item.id}`} alt="teste" />
                   <video autoPlay={false}  muted={false} controls className="rendervideo" id={`video_${item.id}`} type="video/mp4"  src=""></video>
                 </div>
 

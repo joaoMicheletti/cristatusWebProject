@@ -67,6 +67,7 @@ export default function Dashboard() {
             let tokenCrister = sessionStorage.getItem('tokenCrister');
             const Data = {
                 token,
+                typeUser: "Crister",
                 tokenCrister,
                 subscription
             }

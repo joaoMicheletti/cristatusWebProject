@@ -193,13 +193,13 @@ export default function Calendario() {
                                 console.log(Data)
                                 await Api.post('enviarAprovacao', Data).then((resposne) => {
                                     console.log(resposne); 
-                                    /*let display = document.querySelector(`#_${conteudo.id}`);
+                                    let display = document.querySelector(`#_${conteudo.id}`);
                                     display.style.display = 'none'
                                 
                                     const audio = new Audio(clickSound);
                                     audio.volume = 1;
                                     audio.play();
-                                   */ 
+                                   
                                 }).catch((Erro) => {
                                     console.log("erro interno");
                                 });
