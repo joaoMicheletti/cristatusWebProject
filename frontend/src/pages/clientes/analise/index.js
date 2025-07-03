@@ -7,7 +7,7 @@ import clickSound from '../../../assets/music/aproved.mp3';
 
 
 export default function AnaliseCliente(){
-    const URL = "https://cristatusbackapp-production.up.railway.app/image/";
+    const URL = 'http://127.0.0.1:3333/image/'; // "https://cristatusbackapp-production.up.railway.app/image/";
     // usaremos useeffectr para ao caregar a pagina buscar todas as publicações no banco dce dados.
     var [ img, setImg] = useState([]); // armazenar os arquivos 
     var [ajuste, setAjuste] = useState(""); // armazenar o ajuste a ser realizado na aplicação.
@@ -105,19 +105,20 @@ export default function AnaliseCliente(){
                                 tokenUser: item.tokenUser
                             }
                             await Api.post('/aprovacaoCliente', Data).then((response) => {
-                                console.log(response.data.respostaMetaPublicacao)
+                                console.log(response.data.respostaMetaPublicacao, 'aqui');
+                                alert('Seu conteúdo foi Programado')
 
                             }).catch((Erro) => {
                                 console.log(console.error());
                                 
                             })
-                            /**
+                            const audio = new Audio(clickSound);
+                            audio.volume = 1;
+                            audio.play();
                             let display = document.querySelector(`#_-_${item.id}`);
                             display.style.display = 'none'
                                    
-                            const audio = new Audio(clickSound);
-                            audio.volume = 1;
-                            audio.play(); */
+                            
                         }
                         return(
                             <div  id={`_-_${item.id}`} className="contentpublication" key={item.id}>

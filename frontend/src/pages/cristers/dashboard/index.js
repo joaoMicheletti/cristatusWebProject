@@ -7,7 +7,7 @@ import _03 from '../../../assets/capa_Dashboard/03.png';
 import _04 from '../../../assets/capa_Dashboard/04.png';
 import _05 from '../../../assets/capa_Dashboard/05.png';
 import _06 from '../../../assets/capa_Dashboard/06.png';
-import _07 from '../../../assets/capa_Dashboard/07.webp';
+import User from '../../../assets/capa_Dashboard/user.webp';
 import Criacao from  '../../../assets/capa_Dashboard/criacao.webp';
 import Update from '../../../assets/capa_Dashboard/update.webp'
 import Aprovacao from '../../../assets/capa_Dashboard/aprovacao.webp'
@@ -36,7 +36,9 @@ export default function Dashboard() {
         { img: Aprovacao, link: "aprovacao", description: "Aprovação de conteudo" },
         { img: Ajustes, link: "solicitacoes", description: "Ajustes Solicitados"},
         { img: Chave, link: "chave", description: "Cahve de acesso "},
-        { img: Register, link: "cadUSer", description: "Cadastro de Cliente "}
+        { img: Register, link: "cadUSer", description: "Cadastro de Cliente "},
+        { img: Register, link: "cadColab", description: "Cadastro de colaborador"},
+        { img: User, link: "buscarCliente", description: "update dados Clientes"}, 
         
         
     ];

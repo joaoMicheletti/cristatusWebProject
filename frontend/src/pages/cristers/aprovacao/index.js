@@ -8,7 +8,7 @@ import clickSound from '../../../assets/music/aproved.mp3';
 
 export default function AprovacaoConteudo() {
   // índice atual para cada carrossel (por item.id)
-  const URL = "https://cristatusbackapp-production.up.railway.app/image/";
+  const URL = 'http://127.0.0.1:3333/image/';// "https://cristatusbackapp-production.up.railway.app/image/";
   const [cliente, setCliente] = useState([]);
   const [inicio, setInicio] = useState('');
   const [fim, setFim] = useState('');

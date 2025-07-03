@@ -5,15 +5,24 @@ import Api from "../../../services/api";
 
 export default function ChaveAcesso() {
   const [chave, setChave] = useState("");
+  const [data, setData] = useState('');
 
   async function updateChave() {
     if (!chave) {
       alert("Por favor, insira uma chave antes de atualizar.");
       return;
+    } if(!data){
+      alert('Forneça adata de validade da chave de acesso!')
+      return;
     }
-
+    let sep = data.split('-');
+    let diaMes = `${sep[2]}/${sep[1]}/${sep[0]}`
+    let Data = {
+      token: chave,
+      datalimite: diaMes,
+    }
     try {
-      const response = await Api.post("/createToken", { token:chave });
+      const response = await Api.post("/createToken", Data);
       console.log(response)
       if(response.data === 1){
         alert('Chave atualizada com sucesso')
@@ -38,6 +47,7 @@ export default function ChaveAcesso() {
               value={chave}
               onChange={(e) => setChave(e.target.value)}
             />
+            <input onChange={e=> setData(e.target.value)} type="date"/>
           </label>
           <button onClick={updateChave}>Atualizar chave de acesso</button>
           <p>

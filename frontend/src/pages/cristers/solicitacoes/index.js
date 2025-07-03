@@ -8,7 +8,7 @@ import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function AprovacaoConteudo() {
-  const URL = 'https://cristatusbackapp-production.up.railway.app/image/';
+  const URL = 'http://127.0.0.1:3333/image/';// 'https://cristatusbackapp-production.up.railway.app/image/';
   // 1. cliente inicia como array
   const [cliente, setCliente] = useState([]);
   const [inicio, setInicio] = useState('');
