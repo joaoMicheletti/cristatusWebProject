@@ -63,6 +63,7 @@ export default function Calendario() {
                 mes: datesArray[cont].month,
                 ano: datesArray[cont].year,
                 tokenUser: localStorage.getItem('referenciaCliente'),
+                hora: 9,
             };
             //antes de craira de fato  o cronograma vamos verifiacar se já nao possui a data cadastrrada no calendario editoria
             await Api.post("buscarData", Data).then((responseBuscarData) => {
