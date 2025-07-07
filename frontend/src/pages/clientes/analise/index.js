@@ -7,7 +7,7 @@ import clickSound from '../../../assets/music/aproved.mp3';
 
 
 export default function AnaliseCliente(){
-    const URL = 'http://127.0.0.1:3333/image/'; // "https://cristatusbackapp-production.up.railway.app/image/";
+    const URL = 'https://cristatusbackapp-production.up.railway.app/image/'; // "https://cristatusbackapp-production.up.railway.app/image/";
     // usaremos useeffectr para ao caregar a pagina buscar todas as publicações no banco dce dados.
     var [ img, setImg] = useState([]); // armazenar os arquivos 
     var [ajuste, setAjuste] = useState(""); // armazenar o ajuste a ser realizado na aplicação.

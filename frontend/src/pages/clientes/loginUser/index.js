@@ -40,6 +40,26 @@ export default function LoginUser() {
         
     };
 
+
+    // InstagramLoginButton.tsx
+    const clientId = '3117860508390563';
+    const redirectUri = 'http://localhost:3333/callback'; // configure no Facebook Dev
+    const scope = [
+        'instagram_basic',
+        'pages_show_list',
+        'pages_read_engagement',
+        'pages_manage_posts',
+        'instagram_content_publish',
+        'ads_management',
+        'business_management'
+    ].join(',');
+
+    const loginUrl = `https://www.facebook.com/v23.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code`;
+
+    const handleLogin = () => {
+    window.location.href = loginUrl;
+    };
+
     return (
         <>
             <section id="sectionFormulario">
@@ -64,6 +84,7 @@ export default function LoginUser() {
                         />
                         <br/>
                         <input onClick={Login} id="BtnLoginUser" type="button" value="Login"/>
+                        <p id="LGI"><a onClick={handleLogin}>Logar com Facebook</a></p>
                     </form>
                     <p className="alerta_login"></p>
                 </div>
