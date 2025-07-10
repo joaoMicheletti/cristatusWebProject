@@ -3,6 +3,7 @@ import Api from '../../../services/api';
 //import './styles.css';
 import { useNavigate } from "react-router-dom";
 import logoLogin from '../../../assets/image/logoLogin.webp'
+import { FaFacebookSquare } from "react-icons/fa";
 
 export default function RegisterCliente() {
     const Hystory = useNavigate();
@@ -49,6 +50,26 @@ export default function RegisterCliente() {
         
     };
 
+    // InstagramLoginButton.tsx
+    const empresaCNPJ = sessionStorage.getItem('tokenCrister')
+    const clientId = '3117860508390563';
+    const redirectUri = 'http://localhost:3333/callback'; // configure no Facebook Dev
+    const scope = [
+        'instagram_basic',
+        'pages_show_list',
+        'pages_read_engagement',
+        'pages_manage_posts',
+        'instagram_content_publish',
+        'ads_management',
+        'business_management'
+    ].join(',');
+
+    const loginUrl = `https://www.facebook.com/v23.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&state=${empresaCNPJ}`;
+
+    const handleLogin = () => {
+    window.location.href = loginUrl;
+    };
+
     return (
         <>
             <section id="sectionFormulario">
@@ -93,8 +114,10 @@ export default function RegisterCliente() {
                         />
                         <br/>
                         <input onClick={Login} id="BtnLoginUser" type="button" value="Login"/>
+                        <p id="LGI"><a onClick={handleLogin}><FaFacebookSquare /></a></p><br/>
                     </form>
                     <p className="alerta_login"></p>
+                    
                 </div>
             </section>
         </>

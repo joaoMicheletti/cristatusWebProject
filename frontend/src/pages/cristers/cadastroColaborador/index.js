@@ -90,7 +90,7 @@ export default function RegisterCliente() {
                             required
                         />
                         <br/>
-                        <input onClick={Login} id="BtnLoginUser" type="button" value="Login"/>
+                        <input onClick={Login} id="BtnLoginUser" type="button" value="Register"/>
                     </form>
                     <p className="alerta_login"></p>
                 </div>

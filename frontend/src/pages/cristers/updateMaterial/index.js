@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Api from '../../../services/api';
 
 export default function CreateContent() {
+  const URL = 'http://127.0.0.1:3333/image/'
   const history = useNavigate();
   // ① inicializa como array
   const [users, setUsers] = useState([]);
@@ -38,7 +39,7 @@ export default function CreateContent() {
             return (
               <div className="cardDashCrister" key={index}>
                 <div onClick={redirect} className="card-img">
-                  <img src={_07} alt={`Card ${index + 1}`} className="card-img-inner" />
+                  <img src={`${URL}${u.foto}`} alt={`Card ${index + 1}`} className="card-img-inner" />
                 </div>
                 {/* mostra a propriedade que você quiser */}
                 <p className="card-description">{u.user}</p>

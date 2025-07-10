@@ -190,7 +190,10 @@ export default function Calendario() {
                                     ano: conteudo.ano, 
                                     tokenUser:localStorage.getItem('referenciaCliente'), 
                                     descricaoArte: descrição,
-                                    tema, formato, legenda, }; // falta mandar a descrição da arte"
+                                    tema, 
+                                    formato, 
+                                    descricaoLegenda: legenda, 
+                                }; 
                                 console.log(Data)
                                 await Api.post('enviarAprovacao', Data).then((resposne) => {
                                     console.log(resposne); 
@@ -244,7 +247,7 @@ export default function Calendario() {
                                 </div>
                         
                                 <div className="legendaCliente">
-                                    <h3>Legenda:</h3>
+                                    <h3>Descrição para legenda:</h3>
                                     <textarea onChange={e => legenda = e.target.value} rows={15} className="legendaPublicação" 
                                     placeholder={conteudo.legenda}>
                                     </textarea>

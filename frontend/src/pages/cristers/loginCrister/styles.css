@@ -16,8 +16,8 @@
 #formularioLoginUser{
     width: 50%;
     margin-left: 25%;
-    height: 60vh;
-    margin-top: 20vh;
+    height: auto;
+    margin-top: 10vh;
     border-radius: 30px;
     background-color: rgba(36, 39, 39, 0.322);
     box-shadow: 3px 3px 10px black;
@@ -63,8 +63,8 @@
     #formularioLoginUser{
         width: 90%;
         margin-left: 5%;
-        height: 50vh;
-        margin-top: 25vh;
+        height: auto;
+        margin-top: 20vh;
         border-radius: 30px;
         background-color: rgba(36, 39, 39, 0.322);
         box-shadow: 3px 3px 10px black;

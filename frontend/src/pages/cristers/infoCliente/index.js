@@ -10,6 +10,8 @@ export default function InfoCliente() {
   const [senha, setSEnha] = useState('');
   const [fatura, setFatura] = useState('');
   const [hora, setHora] = useState('');
+  const [foto, setFoto] = useState(null);
+  const URL = 'http://127.0.0.1:3333/image/'
 
   useEffect(() => {
     Api.get("getUser")
@@ -96,6 +98,60 @@ export default function InfoCliente() {
     console.log(Data)
     
   };
+  async function updateIMG() {
+  // Verifica se a foto foi selecionada
+  if (!foto || foto.length === 0) {
+    alert("Por favor, selecione uma foto.");
+    return; // Previne a execução do restante da função caso não haja foto
+  }
+
+  const selectedFile = foto[0]; // Pega o primeiro arquivo da lista de arquivos selecionados
+
+  // Verifica se o arquivo é do tipo 'Blob' (neste caso, arquivo de imagem)
+  if (!(selectedFile instanceof Blob)) {
+    alert("O arquivo selecionado não é válido.");
+    return;
+  }
+
+  // Criação do FormData
+  const formDataUnico = new FormData();
+  formDataUnico.append('file', selectedFile, `${clienteSelecionado[0][0].idPerfil}.png`); // Usa o nome real do arquivo
+
+  // Configuração dos headers
+  const headers = {
+    'Content-Type': 'multipart/form-data',
+  };
+
+  try {
+    // Envia o arquivo para o backend
+    const response = await Api.post('/file', formDataUnico, { headers });
+
+    // Lida com a resposta do servidor
+    let Data = {
+      id: clienteSelecionado[0][0].id,
+      foto: response.data.filename
+    }
+    console.log('Resposta do servidor:', response.data);
+    await Api.post('updateoFto', Data).then((response) => {
+      console.log(response)
+      if(response.data.res > 0){
+        alert('foto ataulizada!')
+        window.location.reload();
+      }
+
+    }).catch((err) => {
+      alert("erro ao salvar a foto no banco de dados");
+      console.log(err)
+    })
+    if (response.status === 200) {
+      alert("Imagem atualizada com sucesso!");
+    }
+  } catch (error) {
+    // Captura e exibe qualquer erro ocorrido
+    console.error('Erro ao enviar o arquivo:', error);
+    alert("Erro ao atualizar a imagem. Tente novamente.");
+  }
+}
 
 
 
@@ -126,6 +182,11 @@ export default function InfoCliente() {
             clienteSelecionado[0].map((item, index) => (
                 // seu conteúdo aqui
                     <div id="One" key={index}>
+                      <div id="imgPerfil">
+                        <img id="Perfil" src={`${URL}${clienteSelecionado[0][0].foto}`}/>
+                        <input type="file" onChange={e => setFoto(e.target.files)} /><br/>
+                        <button id="btnIMG" onClick={updateIMG}>Editar</button>
+                      </div>
                         <label id="nome">
                             Cliente / usuário: {item.user}
                         </label>

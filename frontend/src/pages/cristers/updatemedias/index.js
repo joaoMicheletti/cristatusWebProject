@@ -7,13 +7,14 @@ import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function AprovacaoConteudo() {
   // url de imagens 
-  const URL = 'https://cristatusbackapp-production.up.railway.app/image/';
+  const URL = 'http://127.0.0.1:3333/image/';//'https://cristatusbackapp-production.up.railway.app/image/';
   // variavel para salvar a resposta do envio da imagem ao servidor.
   const [respostaIMG, setRespostaImg] = useState('');  
   // 1. cliente inicia como array
   const [inicio, setInicio] = useState('');
   const [fim, setFim] = useState('');
   const [calendario, setCalendario] = useState([]);
+  const [legenda, setLegenda] = useState('');
   // variável para salvar os aquivos :
   const [selectedFilesMap, setSelectedFilesMap] = useState({});
   // arrey de nome de imagend  para renderia-las na tela apos o upload.
@@ -259,7 +260,7 @@ export default function AprovacaoConteudo() {
               };
               console.log(Data, respostaIMG);
               if(respostaIMG === ''){
-                alert('Sertifiquese de ter enviado as artes ou videos!')
+                alert('a publicação só ira para aprovação após efetuarem o upload das artes/videos')
               } else {
                 console.log(respostaIMG);
                  // crair uma variavel que vai determinar se os arquivos foram enviados antes de permitir alterar o campo art no data base.
@@ -279,6 +280,26 @@ export default function AprovacaoConteudo() {
               }
                             
             }
+            
+            async function updateLegenda() {
+              if(legenda === ''){
+                alert('Preencha a lengenda!')
+              } else {
+                let Data = {
+                  id: item.id,
+                  legenda 
+                };
+                await Api.post('legendaUnica', Data).then((response) => {
+                  console.log(response)
+                  if(response.data.res === 'salva'){
+                    alert('Leganda salva com sucesso.')
+                  }
+                }).catch((Erro) => {
+                  alert('Erro ao registra a legenda')
+                })   
+              }
+                            
+            };
                        
             return(
 
@@ -308,6 +329,7 @@ export default function AprovacaoConteudo() {
                   <h3>Arte descrição:</h3><br/>
                   <p>{item.descricaoArte}</p>
                 </div>
+                
                 <div className="redeImg">
                   <img className="imgREnder" id={`img_${item.id}`} alt="teste" />
                   <video autoPlay={false}  muted={false} controls className="rendervideo" id={`video_${item.id}`} type="video/mp4"  src=""></video>
@@ -329,13 +351,17 @@ export default function AprovacaoConteudo() {
                   >Salvar material</button>
                 </div>
                 
-                
-                <div className="legendaCliente">
-                    <h3>Legenda:</h3>
-                    <p  className="legendaPublicação">
-                      {item.legenda}
-                    </p>
+                <div id="descricaoArte">
+                  <h3>Legenda descrição:</h3><br/>
+                  <p>{item.descricaoArte}</p>
                 </div>
+                <div className="legendaCliente">
+                    <h3>Legenda:<p id="LEGENDAR"></p> </h3>
+                    <textarea onChange={e => setLegenda(e.target.value)} rows={15} className="legendaPublicação" 
+                      placeholder={item.legenda}>
+                    </textarea>
+                </div>
+                <input id="buttonLegenda" type="button" value="Salvar Legenda" onClick={updateLegenda}/>
 
                 
 
