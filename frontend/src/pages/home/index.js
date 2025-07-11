@@ -11,7 +11,9 @@ export default function Home() {
     return (
         <>
             <h1>Cristatus</h1>
-            <Link to='/loginUser'>Login</Link>
+            <Link to='/loginUser'>Login cliente</Link>
+            <br/>
+            <Link to='/loginCrister'>Login Crister</Link>
         </>
     );
 }
