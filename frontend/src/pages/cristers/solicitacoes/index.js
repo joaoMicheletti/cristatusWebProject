@@ -236,7 +236,7 @@ export default function AprovacaoConteudo() {
                 await Api.post('/file', formDataUnico, headers).then( async(response) =>{
                   console.log(response);
                   // armazenar o nome do arquivo no na variavel render:
-                  render.push(response.data)
+                  render.push(response.data )
                   // salvar o nome do arquivo mno banco de dados
                   // identificação da publicação atraves do dia mes ano formato e token
                   const Data = {
