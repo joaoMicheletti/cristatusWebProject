@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Api from '../../../services/api';
 
 export default function CreateContent() {
-  const URL = "http://127.0.0.1:3333/image/"
+  const URL = "http://ec2-54-233-243-115.sa-east-1.compute.amazonaws.com:3333/image/"
   const history = useNavigate();
   // ① inicializa como array
   const [users, setUsers] = useState([]);

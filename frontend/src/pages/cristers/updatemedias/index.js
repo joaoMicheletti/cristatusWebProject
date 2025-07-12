@@ -7,7 +7,7 @@ import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function AprovacaoConteudo() {
   // url de imagens 
-  const URL = 'http://127.0.0.1:3333/image/';//'https://cristatusbackapp-production.up.railway.app/image/';
+  const URL = 'http://ec2-54-233-243-115.sa-east-1.compute.amazonaws.com:3333/image/';//'https://cristatusbackapp-production.up.railway.app/image/';
   // variavel para salvar a resposta do envio da imagem ao servidor.
   const [respostaIMG, setRespostaImg] = useState('');  
   // 1. cliente inicia como array
