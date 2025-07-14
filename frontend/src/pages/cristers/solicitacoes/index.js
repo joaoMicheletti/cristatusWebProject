@@ -8,7 +8,7 @@ import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function AprovacaoConteudo() {
-  const URL = 'http://ec2-54-233-243-115.sa-east-1.compute.amazonaws.com:3333/image/';//'https://cristatusbackapp-production.up.railway.app/image/';// 'https://cristatusbackapp-production.up.railway.app/image/';
+  const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/';//'https://cristatusbackapp-production.up.railway.app/image/';// 'https://cristatusbackapp-production.up.railway.app/image/';
   // 1. cliente inicia como array
   const [cliente, setCliente] = useState([]);
   const [inicio, setInicio] = useState('');
@@ -255,7 +255,7 @@ export default function AprovacaoConteudo() {
                     elemento2.style.display = 'none'
                     let elemento = document.querySelector(`#img_${item.id}`)
                     elemento.style.display = 'block'
-                    elemento.src = `http://ec2-54-233-243-115.sa-east-1.compute.amazonaws.com:3333/image/${response.data.filename}`
+                    elemento.src = `https://urchin-upright-hardly.ngrok-free.app/image/${response.data.filename}`
 
                   } else if(item.formato === 'video'){
                     let elemento2 = document.querySelector(`#img_${item.id}`)
@@ -263,7 +263,7 @@ export default function AprovacaoConteudo() {
                     elemento2.style.display = 'none'
                     let elemento = document.querySelector(`#video_${item.id}`)
                     elemento.style.display = 'block'
-                    elemento.src = `http://ec2-54-233-243-115.sa-east-1.compute.amazonaws.com:3333/image/${response.data.filename}`
+                    elemento.src = `https://urchin-upright-hardly.ngrok-free.app/image/${response.data.filename}`
                   }
 
                   

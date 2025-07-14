@@ -34,7 +34,8 @@ export default function Dashboard() {
         { img:  Metricas, link: "", description: "Relatorio de Métricas." },
 
         { img:  Agenda, link: "", description: "Agenda de Eventos." },
-        { img:  ADM, link: "administrativo", description: "Administrativo" },
+        { img:  ADM, link: "administrativo", description: "Administrativo" },        
+        { img:  Metricas, link: "arquivoMorto", description: "Arquivo Morto" },
         
     ];
 
@@ -70,7 +71,7 @@ export default function Dashboard() {
             }
             if(token){
                 console.log(token)
-                let resgisterUser = await Api.post('/notificationsREgister', Data)
+                let resgisterUser = await Api.post('/notificationsRegister', Data)
                 console.log(resgisterUser.data)
             }
         })

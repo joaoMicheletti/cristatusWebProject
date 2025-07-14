@@ -11,7 +11,8 @@ export default function InfoCliente() {
   const [fatura, setFatura] = useState('');
   const [hora, setHora] = useState('');
   const [foto, setFoto] = useState(null);
-  const URL = 'http://127.0.0.1:3333/image/'
+  const [idInsta, setIdInsta] = useState('');
+  const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/'
 
   useEffect(() => {
     Api.get("getUser")
@@ -91,7 +92,10 @@ export default function InfoCliente() {
         horario: Hora 
     };
     await Api.post('updateHora', Data).then((response) => {
-        alert(response.data.res);
+      console.log(response.data.res)
+        if(response.data.res === 1){
+          alert("ataulização de Horário realizada!")
+        }
     }).catch((Erro) => {
         console.log(Erro);
     })
@@ -152,6 +156,26 @@ export default function InfoCliente() {
     alert("Erro ao atualizar a imagem. Tente novamente.");
   }
 }
+async function updateIdInsta() {
+  if(idInsta === ''){
+    alert('Forneça o id, do perfil do Instagram');
+  } else {
+    // efetuar a atualização do id do instagram.
+    let Data = {
+      token: clienteSelecionado[0][0].token,
+      idInsta
+    }
+    console.log(Data)
+    await Api.post('updateIdInsta', Data).then((response) => {
+      if(response.data.res >0){
+        alert('Id atualizado com sucesso.')
+      }
+    }).catch((Erro) => {
+      console.log(Erro);
+    });
+  }
+  
+}
 
 
 
@@ -190,6 +214,16 @@ export default function InfoCliente() {
                         <label id="nome">
                             Cliente / usuário: {item.user}
                         </label>
+                        <div className="OneDiv">
+                            <label>
+                                ID perfil Instagram.<br/>
+                                <input id="idInsta" 
+                                    onChange={e => setIdInsta(e.target.value)}
+                                    placeholder={item.pass}
+                                />
+                            </label>
+                            <button onClick={updateIdInsta}>Editar</button>
+                        </div>
                         <div className="OneDiv">
                             <label>
                                 Senha<br/>

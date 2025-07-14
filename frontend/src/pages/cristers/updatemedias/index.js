@@ -7,7 +7,7 @@ import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function AprovacaoConteudo() {
   // url de imagens 
-  const URL = 'http://ec2-54-233-243-115.sa-east-1.compute.amazonaws.com:3333/image/';//'https://cristatusbackapp-production.up.railway.app/image/';
+  const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/';//'https://cristatusbackapp-production.up.railway.app/image/';
   // variavel para salvar a resposta do envio da imagem ao servidor.
   const [respostaIMG, setRespostaImg] = useState('');  
   // 1. cliente inicia como array
@@ -118,7 +118,7 @@ export default function AprovacaoConteudo() {
               // verificar se o aray de arquivos possui masi que um arquivo!
               // se sim execuar um loop para enviar um arquivo de cada ves ao backend.
               //variavel responsável pelo nome do arquivo.
-              let nome = `${item.tokenUser}-${item.formato}-${item.dia}-${item.mes}-${item.ano}-`
+              let nome = `_${item.formato}-${item.dia}-${item.mes}-${item.ano}-`
               console.log(files.length)
               if(files.length === 1){
                 const formDataUnico = new FormData(); // so para deixar o nome unico para cada necessidade.

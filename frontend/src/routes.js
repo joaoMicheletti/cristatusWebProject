@@ -20,6 +20,7 @@ import ChaveAcesso from './pages/cristers/cheve de acesso/index.js';
 import RegisterCliente from './pages/cristers/cadastroCliente/index.js';
 import RegisterColaborador from './pages/cristers/cadastroColaborador/index.js';
 import BuscarCliente from './pages/cristers/infoCliente/index.js';
+import ArquivoMorto from './pages/clientes/arquivoMorto/index.js';
 // <Route path='*' element={<NotFound/>}/>
 export default function Rotas(){
     return(
@@ -31,6 +32,7 @@ export default function Rotas(){
                 <Route path='analiseCliente' element={<AnaliseCliente/>}/>
                 <Route path='manualAplication' element={<Manual/>}/>
                 <Route path='administrativo' element={<Administrativo/>} />
+                <Route path='arquivoMorto' element={<ArquivoMorto/>}/>
 
 
                 <Route path='loginCrister' element={<LoginCrister/>}/>
