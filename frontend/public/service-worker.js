@@ -6,7 +6,7 @@ self.addEventListener('push', function(event) {
     event.waitUntil(
         self.registration.showNotification('Cristatus CS', {
             body,
-            icon: '/logo512.png', // Caminho relativo para o ícone
+            icon: '/favicon.png', // Caminho relativo para o ícone
             // Caso queira adicionar uma imagem maior (ex: logo grande), use o campo 'image'
             //image: '/assets/image/logoLogin.webp',
         })
