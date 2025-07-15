@@ -207,9 +207,7 @@ async function updateIdInsta() {
                 // seu conteúdo aqui
                     <div id="One" key={index}>
                       <div id="imgPerfil">
-                        <img id="Perfil" src={`${URL}${clienteSelecionado[0][0].foto}`}/>
-                        <input type="file" onChange={e => setFoto(e.target.files)} /><br/>
-                        <button id="btnIMG" onClick={updateIMG}>Editar</button>
+                        <img id="Perfil" src={`${item.foto}`}/>
                       </div>
                         <label id="nome">
                             Cliente / usuário: {item.user}

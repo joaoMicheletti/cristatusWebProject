@@ -39,7 +39,7 @@ console.log(users)
             return (
               <div className="cardDashCrister" key={index}>
                 <div onClick={redirect} className="card-img">
-                  <img src={`${URL}${u.foto}`} alt={`Card ${index + 1}`} className="card-img-inner" />
+                  <img src={`${u.foto}`} alt={`Card ${index + 1}`} className="card-img-inner" />
                 </div>
                 {/* mostra a propriedade que você quiser */}
                 <p className="card-description">{u.user}</p>

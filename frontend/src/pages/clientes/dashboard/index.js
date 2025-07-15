@@ -45,37 +45,61 @@ export default function Dashboard() {
         if (newIndex >= images.length) newIndex = 0;
         setCurrentIndex(newIndex);
     };
-    // Registrar o service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js')
         .then(async serviceWorker => {
-            let subscription = await serviceWorker.pushManager.getSubscription();
-            console.log(subscription)
+            // Função de conversão necessária para a chave pública
+            function urlBase64ToUint8Array(base64String) {
+                const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+                const base64 = (base64String + padding)
+                    .replace(/-/g, '+')
+                    .replace(/_/g, '/');
 
-            if(! subscription){
-                const publicKeyResponse = await Api.get('/notificationsKey')
+                const rawData = atob(base64);
+                const outputArray = new Uint8Array(rawData.length);
+
+                for (let i = 0; i < rawData.length; ++i) {
+                    outputArray[i] = rawData.charCodeAt(i);
+                }
+                return outputArray;
+            }
+
+            let subscription = await serviceWorker.pushManager.getSubscription();
+            console.log(subscription);
+
+            if (!subscription) {
+                const publicKeyResponse = await Api.get('/notificationsKey');
+
                 subscription = await serviceWorker.pushManager.subscribe({
                     userVisibleOnly: true,
-                    applicationServerKey: publicKeyResponse.data.publicKey
+                    applicationServerKey: urlBase64ToUint8Array(publicKeyResponse.data.publicKey)
                 });
             }
-            console.log({subscription})
-            // verificar quem esta logado logado na aplicação usuário ou Crister ou visitante do nosso site.
+
+            console.log({ subscription });
+
+            // Verificar quem está logado
             let token = sessionStorage.getItem('token');
             let tokenCrister = sessionStorage.getItem('tokeCrister');
+
             const Data = {
                 token,
                 typeUser: "Cliente",
                 tokenCrister,
                 subscription
-            }
-            if(token){
-                console.log(token)
-                let resgisterUser = await Api.post('/notificationsRegister', Data)
-                console.log(resgisterUser.data)
+            };
+
+            if (token) {
+                console.log(token);
+                let resgisterUser = await Api.post('/notificationsRegister', Data);
+                console.log(resgisterUser.data);
             }
         })
-    }
+        .catch(error => {
+            console.error('Erro ao registrar o service worker:', error);
+        });
+    };
+
     // Solicitar permissão para notificações
     if ('Notification' in window) {
         Notification.requestPermission().then(function(permission) {
