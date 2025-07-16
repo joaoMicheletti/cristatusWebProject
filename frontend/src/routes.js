@@ -21,6 +21,7 @@ import RegisterCliente from './pages/cristers/cadastroCliente/index.js';
 import RegisterColaborador from './pages/cristers/cadastroColaborador/index.js';
 import BuscarCliente from './pages/cristers/infoCliente/index.js';
 import ArquivoMorto from './pages/clientes/arquivoMorto/index.js';
+import PoliticaDePrivacidade from './pages/politica/index.js';
 // <Route path='*' element={<NotFound/>}/>
 export default function Rotas(){
     return(
@@ -34,6 +35,7 @@ export default function Rotas(){
                 <Route path='administrativo' element={<Administrativo/>} />
                 <Route path='arquivoMorto' element={<ArquivoMorto/>}/>
 
+                <Route path='politica-de-privacidade' element={<PoliticaDePrivacidade/>}/>
 
                 <Route path='loginCrister' element={<LoginCrister/>}/>
                 <Route path='dashboardCrister' element={<DashboarCrister/>}/>

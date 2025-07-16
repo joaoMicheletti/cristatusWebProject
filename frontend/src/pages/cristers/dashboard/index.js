@@ -18,6 +18,11 @@ import { useNavigate } from "react-router-dom";
 import Api from '../../../services/api';
 
 export default function Dashboard() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    if (token) {
+        sessionStorage.setItem("token", token);
+    }
     const Hystory = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
     
@@ -50,37 +55,41 @@ export default function Dashboard() {
         setCurrentIndex(newIndex);
     };
     // Registrar o service worker
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && 'PushManager' in window) {
         navigator.serviceWorker.register('/service-worker.js')
-        .then(async serviceWorker => {
-            let subscription = await serviceWorker.pushManager.getSubscription();
-            console.log(subscription)
+            .then(async (registration) => {
+            // Verifica se já existe uma assinatura
+            let existingSubscription = await registration.pushManager.getSubscription();
+            console.log(existingSubscription);
+            if (existingSubscription) {
+                // Envia a assinatura atual para o backend para validar ou atualizar
+                await Api.post('/notifications/check', { subscription: existingSubscription });
+                console.log('Assinatura já existente verificada.');
+            } else {
+                // Requisita a chave pública do servidor
+                const { data } = await Api.get('/notificationsKey');
 
-            if(! subscription){
-                const publicKeyResponse = await Api.get('/notificationsKey')
-                subscription = await serviceWorker.pushManager.subscribe({
-                    userVisibleOnly: true,
-                    applicationServerKey: publicKeyResponse.data.publicKey
+                // Cria nova assinatura
+                const newSubscription = await registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: data.publicKey
                 });
+
+                // Envia nova assinatura ao backend
+                await Api.post('/notificationsRegister', {
+                token: sessionStorage.getItem('token'),
+                typeUser: 'Cliente',
+                tokenCrister: sessionStorage.getItem('tokenCrister'),
+                subscription: newSubscription
+                });
+
+                console.log('Nova assinatura criada e registrada.');
             }
-            console.log({subscription})
-            // verificar quem esta logado logado na aplicação usuário ou Crister ou visitante do nosso site.
-            let token = sessionStorage.getItem('token');
-            let tokenCrister = sessionStorage.getItem('tokenCrister');
-            const Data = {
-                token,
-                typeUser: "Crister",
-                tokenCrister,
-                subscription
-            }
-            console.log(Data)
-            if(tokenCrister){
-                console.log(token)
-                let resgisterUser = await Api.post('/notificationsREgister', Data)
-                console.log(resgisterUser.data)
-            }
-        })
-    }
+            })
+            .catch(err => {
+            console.error('Erro ao registrar service worker ou assinar:', err);
+            });
+    };
     // Solicitar permissão para notificações
     if ('Notification' in window) {
         Notification.requestPermission().then(function(permission) {

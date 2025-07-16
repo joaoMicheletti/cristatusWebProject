@@ -11,6 +11,7 @@ export default function LoginUser() {
     // Coloque os hooks useState fora da função Login
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
+    const [aceitaPolitica, setAceitaPolitica] = useState(false);
     
 
     // Função de login
@@ -59,7 +60,14 @@ export default function LoginUser() {
     const loginUrl = `https://www.facebook.com/v23.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&state=${empresaCNPJ}`;
 
     const handleLogin = () => {
-    window.location.href = loginUrl;
+        console.log(aceitaPolitica)
+        if(aceitaPolitica === true){
+            window.location.href = loginUrl;
+        } else {
+            alert('confira nossas politicas de privacidade.')
+            return
+        }
+    //
     };
     return (
         <>
@@ -86,6 +94,21 @@ export default function LoginUser() {
                         <br/>
                         <input onClick={Login} id="BtnLoginUser" type="button" value="Login"/>
                         <p id="LGI"><a onClick={handleLogin}><FaFacebookSquare /></a></p>
+                        <p id="Politica"> <a href="https://flowly.app.br/politica-de-privacidade" target="_blank">Política de Privacidade</a></p>
+                        <br/>
+                        <div id="Dcheck">
+                            <label id="check">
+                            Concordar_   
+                            <input
+                            type="checkbox"
+                            checked={aceitaPolitica}
+                            onChange={(e) => setAceitaPolitica(e.target.checked)}
+                            
+                        />
+                        </label>
+                        </div>
+                        
+                        <br/>
                         <br/>
                         
                     </form>

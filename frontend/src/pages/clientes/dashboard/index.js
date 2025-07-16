@@ -16,6 +16,11 @@ import { useNavigate } from "react-router-dom";
 import Api from '../../../services/api';
 
 export default function Dashboard() {
+    const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get("token");
+        if (token) {
+            sessionStorage.setItem("token", token);
+        }
     const Hystory = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
     

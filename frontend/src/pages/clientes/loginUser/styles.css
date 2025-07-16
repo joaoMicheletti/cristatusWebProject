@@ -84,4 +84,18 @@
 }
 #LGI a {
     color: white;
+} 
+#Politica {
+    text-align: center;
+    color: white;
+}
+#Dcheck{
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+}
+#check {
+    width: 100%;
+    text-align: center;
+    color: white;
 }
