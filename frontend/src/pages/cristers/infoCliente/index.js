@@ -53,7 +53,9 @@ export default function InfoCliente() {
         }
         console.log(Data)
         await Api.post('updateSenhaUser', Data).then((response) => {
-            alert(response.data.res)
+            
+            if(response.data.res === 1)
+              alert('senha atualizada comsucesso')
         }).catch((Erro) => {
             console.log(Erro);
         });

@@ -41,6 +41,7 @@ export default function Dashboard() {
         { img:  Agenda, link: "", description: "Agenda de Eventos." },
         { img:  ADM, link: "administrativo", description: "Administrativo" },        
         { img:  Metricas, link: "arquivoMorto", description: "Arquivo Morto" },
+        { img:  Metricas, link: "ajustesCliente", description: "Ajustes" },
         
     ];
 

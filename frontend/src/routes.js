@@ -6,6 +6,7 @@ import Dashboard from './pages/clientes/dashboard';
 import AnaliseCliente from './pages/clientes/analise/index.js';
 import Manual from './pages/clientes/manual/index.js';
 import Administrativo from './pages/clientes/adm/index.js'
+import AjustesCliente from  './pages/clientes/ajustes/index.js';
 
 //paginas crister time interno:
 import LoginCrister from './pages/cristers/loginCrister/index.js';
@@ -34,6 +35,7 @@ export default function Rotas(){
                 <Route path='manualAplication' element={<Manual/>}/>
                 <Route path='administrativo' element={<Administrativo/>} />
                 <Route path='arquivoMorto' element={<ArquivoMorto/>}/>
+                <Route path='ajustesCliente' element={<AjustesCliente/>}/>
 
                 <Route path='politica-de-privacidade' element={<PoliticaDePrivacidade/>}/>
 
