@@ -56,7 +56,7 @@ export default function Dashboard() {
     };
     // Registrar o service worker
     if ('serviceWorker' in navigator && 'PushManager' in window) {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
             .then(async (registration) => {
             // Verifica se já existe uma assinatura
             let existingSubscription = await registration.pushManager.getSubscription();

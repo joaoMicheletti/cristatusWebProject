@@ -46,7 +46,7 @@ export default function LoginUser() {
     // InstagramLoginButton.tsx
     const empresaCNPJ = sessionStorage.getItem('tokenCrister')
     const clientId = '3117860508390563';
-    const redirectUri = 'http://localhost:3333/callback'; // configure no Facebook Dev
+    const redirectUri = 'https://urchin-upright-hardly.ngrok-free.app/'; // configure no Facebook Dev ;// colocar dominio do ngrok antes dde mandar para analise 
     const scope = [
         'instagram_basic',
         'pages_show_list',

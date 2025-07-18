@@ -224,7 +224,7 @@ export default function AprovacaoConteudo() {
               // verificar se o aray de arquivos possui masi que um arquivo!
               // se sim execuar um loop para enviar um arquivo de cada ves ao backend.
               //variavel responsável pelo nome do arquivo.
-              let nome = `${item.tokenUser}-${item.formato}-${item.dia}-${item.mes}-${item.ano}-update`
+              let nome = `-${item.formato}-${item.dia}-${item.mes}-${item.ano}-update`
               if(files.length === 1){
                 const formDataUnico = new FormData(); // so para deixar o nome unico para cada necessidade.
                 //tipo do arquivo.

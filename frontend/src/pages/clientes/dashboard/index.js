@@ -51,7 +51,7 @@ export default function Dashboard() {
         setCurrentIndex(newIndex);
     };
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
         .then(async serviceWorker => {
             // Função de conversão necessária para a chave pública
             function urlBase64ToUint8Array(base64String) {
