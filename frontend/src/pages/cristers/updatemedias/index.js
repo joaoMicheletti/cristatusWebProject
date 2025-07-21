@@ -7,7 +7,7 @@ import clickSound from '../../../assets/music/aproved.mp3'
 
 export default function AprovacaoConteudo() {
   // url de imagens 
-  const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/';//'https://cristatusbackapp-production.up.railway.app/image/';
+  const URL = 'https://www.acasaprime1.com.br/image/';
   // variavel para salvar a resposta do envio da imagem ao servidor.
   const [respostaIMG, setRespostaImg] = useState('');  
   // 1. cliente inicia como array

@@ -12,7 +12,7 @@ export default function InfoCliente() {
   const [hora, setHora] = useState('');
   const [foto, setFoto] = useState(null);
   const [idInsta, setIdInsta] = useState('');
-  const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/'
+  //const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/'
 
   useEffect(() => {
     Api.get("getUser")

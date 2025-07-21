@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Api from '../../../services/api';
 
 export default function CreateContent() {
-  const URL = "https://urchin-upright-hardly.ngrok-free.app/image/"
+  const URL = "https://www.acasaprime1.com.br/image/"
   const history = useNavigate();
   // ① inicializa como array
   const [users, setUsers] = useState([]);

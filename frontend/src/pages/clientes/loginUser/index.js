@@ -46,7 +46,7 @@ export default function LoginUser() {
     // InstagramLoginButton.tsx
     const empresaCNPJ = sessionStorage.getItem('tokenCrister')
     const clientId = '3117860508390563';
-    const redirectUri = 'https://urchin-upright-hardly.ngrok-free.app/callback'; // configure no Facebook Dev ;// colocar dominio do ngrok antes dde mandar para analise 
+    const redirectUri = 'https://www.acasaprime1.com.br/callback'; // configure no Facebook Dev ;// colocar dominio do ngrok antes dde mandar para analise 
     const scope = [
         'instagram_basic',
         'pages_show_list',
@@ -94,7 +94,7 @@ export default function LoginUser() {
                         <br/>
                         <input onClick={Login} id="BtnLoginUser" type="button" value="Login"/>
                         <p id="LGI"><a onClick={handleLogin}><FaFacebookSquare /></a></p>
-                        <p id="Politica"> <a href="https://flowly.app.br/politica-de-privacidade" target="_blank">Política de Privacidade</a></p>
+                        <p id="Politica"> <a href="https://acasaprime1.com.br/politica-de-privacidade" target="_blank">Política de Privacidade</a></p>
                         <br/>
                         <div id="Dcheck">
                             <label id="check">

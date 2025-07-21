@@ -8,7 +8,7 @@ import clickSound from '../../../assets/music/aproved.mp3';
 
 export default function AprovacaoConteudo() {
   // índice atual para cada carrossel (por item.id)
-  const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/';// "https://cristatusbackapp-production.up.railway.app/image/";
+  const URL = 'https://www.acasaprime1.com.br/image/';
   const [cliente, setCliente] = useState([]);
   const [inicio, setInicio] = useState('');
   const [fim, setFim] = useState('');

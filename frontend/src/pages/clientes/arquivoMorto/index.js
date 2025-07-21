@@ -6,7 +6,7 @@ import Api from "../../../services/api";
 
 
 export default function AnaliseCliente(){
-    const URL = 'https://urchin-upright-hardly.ngrok-free.app/image/'//'https://cristatusbackapp-production.up.railway.app/image/'; // "https://cristatusbackapp-production.up.railway.app/image/";
+    const URL = 'https://www.acasaprime1.com.br/image/';
     // usaremos useeffectr para ao caregar a pagina buscar todas as publicações no banco dce dados.
     let Data = { tokenUser: sessionStorage.getItem('token')}
     const [publicacao, setPublicacao]= useState([]);
