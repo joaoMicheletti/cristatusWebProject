@@ -29,7 +29,14 @@ export default function HeaderComponente(){
             <div id="headerComponente">
                 <a id="linkHeaderComponente" onClick={redirect}>Dashboard</a>
                 <a onClick={Exit} ><GiExitDoor className="notificationCliente" size={25} /></a>
-                <MdNotificationAdd id="notificationCliente" size={25} />
+                <div id="numNotification">
+                    <div>
+                        <p>999</p>
+                    </div>
+                    
+                    <MdNotificationAdd id="notificationCliente" size={25} />
+                </div>
+                
             </div>
         </>
     );

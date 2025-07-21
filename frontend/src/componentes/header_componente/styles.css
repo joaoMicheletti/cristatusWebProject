@@ -17,11 +17,37 @@
 #linkHeaderComponente:hover{
     font-weight: 600;
 }
+#numNotification {
+    margin-right: 20px;
+    float: right;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+}
+#numNotification div {
+    width: 80%;
+    height: 15px;
+    background-color: rgb(255, 2, 2);
+    border-radius: 50%;
+    margin-left: 10%;
+    margin-top: 5px;
+    margin-left: 10px;
+    position: relative;
+    z-index: 1;
+}
+#numNotification div p {
+    margin-top: 4px;
+    text-align: center;
+    font-size: 8px;
+    color: white;
+    font-weight: 600;
+}
 #notificationCliente {
     float: right;
     margin-right: 20px;
     cursor: pointer;
     color: rgb(255, 255, 255);
+    margin-top: -15px;
 }
 #notificationCliente:hover {
     opacity: 50%;
