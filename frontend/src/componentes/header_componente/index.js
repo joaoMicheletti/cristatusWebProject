@@ -24,6 +24,8 @@ export default function HeaderComponente(){
             Hystory('/dashboardCrister');
         };
     };
+
+    // crair uma função useEfect para buscar as notificaçlções no bano ce
     return(
         <>
             <div id="headerComponente">
@@ -36,7 +38,6 @@ export default function HeaderComponente(){
                     
                     <MdNotificationAdd id="notificationCliente" size={25} />
                 </div>
-                
             </div>
         </>
     );
