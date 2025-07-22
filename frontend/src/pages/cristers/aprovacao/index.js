@@ -107,7 +107,7 @@ export default function AprovacaoConteudo() {
                 
                 if(response.data.res === 1){
                   let display = document.querySelector(`#_${item.id}`);
-                  //display.style.display = 'none'
+                  display.style.display = 'none'
                 
                   const audio = new Audio(clickSound);
                   audio.volume = 1;
