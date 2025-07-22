@@ -25,10 +25,11 @@ export default function RegisterCliente() {
         } else {
             let data = new Date()
             const Data = {
-            user,
-            pass, 
-            idPerfil: idPerfil,
-            initPlano: `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`
+                user,
+                pass, 
+                idPerfil: idPerfil,
+                initPlano: `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`,
+                empresa: sessionStorage.getItem('tokenCrister')
             };
             console.log(Data)
             //enviar para a api e autenticar usuario

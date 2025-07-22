@@ -93,7 +93,7 @@ export default function LoginUser() {
                         />
                         <br/>
                         <input onClick={Login} id="BtnLoginUser" type="button" value="Login"/>
-                        <p id="LGI"><a onClick={handleLogin}><FaFacebookSquare /></a></p>
+                        <p id="LGI"><FaFacebookSquare color="blue" /><a onClick={handleLogin}>Logar com Facebook </a></p>
                         <p id="Politica"> <a href="https://acasaprime1.com.br/politica-de-privacidade" target="_blank">Política de Privacidade</a></p>
                         <br/>
                         <div id="Dcheck">

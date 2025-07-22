@@ -185,7 +185,7 @@ export default function Calendario() {
                                 
                                 // enviar para a atualização de conteudo, area destinada a editores para subir as artes da publicação.
                                 let Data = {
-                                    dia: conteudo.dia, 
+                                    dia: conteudo.dia,
                                     mes: conteudo.mes, 
                                     ano: conteudo.ano, 
                                     tokenUser:localStorage.getItem('referenciaCliente'), 

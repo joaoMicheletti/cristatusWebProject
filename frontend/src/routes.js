@@ -11,6 +11,7 @@ import AjustesCliente from  './pages/clientes/ajustes/index.js';
 //paginas crister time interno:
 import LoginCrister from './pages/cristers/loginCrister/index.js';
 import DashboarCrister from './pages/cristers/dashboard/index.js';
+import DashboarColab from './pages/cristers/dashboardColab/index.js';
 import CreateContent from './pages/cristers/createContent/index.js';
 import Calendario from './pages/cristers/calendario/index.js';
 import Aprovacao from './pages/cristers/aprovacao/index.js';
@@ -23,6 +24,8 @@ import RegisterColaborador from './pages/cristers/cadastroColaborador/index.js';
 import BuscarCliente from './pages/cristers/infoCliente/index.js';
 import ArquivoMorto from './pages/clientes/arquivoMorto/index.js';
 import PoliticaDePrivacidade from './pages/politica/index.js';
+import Termos from './pages/termos/index.js';
+import Delete from './pages/delete/index.js';
 // <Route path='*' element={<NotFound/>}/>
 export default function Rotas(){
     return(
@@ -38,6 +41,8 @@ export default function Rotas(){
                 <Route path='ajustesCliente' element={<AjustesCliente/>}/>
 
                 <Route path='politica-de-privacidade' element={<PoliticaDePrivacidade/>}/>
+                <Route path='termos' element={<Termos/>}/>
+                <Route path='delete' element={<Delete/>}/>
 
                 <Route path='loginCrister' element={<LoginCrister/>}/>
                 <Route path='dashboardCrister' element={<DashboarCrister/>}/>
@@ -51,6 +56,7 @@ export default function Rotas(){
                 <Route path='cadUSer' element={<RegisterCliente/>}/>
                 <Route path='cadColab' element={<RegisterColaborador/>}/>
                 <Route path='buscarCliente' element={<BuscarCliente/>} />
+                <Route path='dashboardColab' element={<DashboarColab/>}/>
             </Routes>
         </Router>
     )

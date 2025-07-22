@@ -51,7 +51,7 @@ export default function PoliticaDePrivacidade() {
 
       <h2>7. Contato</h2>
       <p>
-        Caso tenha dúvidas sobre esta política, entre em contato pelo e-mail: <strong>contato@seudominio.com</strong>
+        Caso tenha dúvidas sobre esta política, entre em contato pelo e-mail: <strong>jv604014@gmail.com</strong>
       </p>
     </div>
   );

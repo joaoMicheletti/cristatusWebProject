@@ -17,12 +17,19 @@ export default function HeaderComponente(){
     }
     
     function redirect(){
-        var verification = sessionStorage.getItem("tokenCrister");
-        if (verification === null){
-            Hystory('/dashboardCliente');
-        } else {
+        var crister = sessionStorage.getItem("tokenCrister");
+        var cristerColab = sessionStorage.getItem("tokenColab"); // Alterei aqui para buscar a chave correta
+
+        if (cristerColab) {
+            console.log('Redirecionando para dashboardColab');
+            Hystory('/dashboardColab');
+        } else if (crister) {
+            console.log('Redirecionando para dashboardCrister');
             Hystory('/dashboardCrister');
-        };
+        } else {
+            console.log('Redirecionando para dashboardCliente');
+            Hystory('/dashboardCliente');
+        }
     };
 
     // crair uma função useEfect para buscar as notificaçlções no bano ce

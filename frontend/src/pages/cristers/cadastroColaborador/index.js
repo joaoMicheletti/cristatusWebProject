@@ -69,7 +69,8 @@ export default function RegisterCliente() {
                             
                             <option value='selecione'>Selecione a função</option>
                             <option value='editor'>Editor</option>
-                            <option value='socialmedia'>social media</option>
+                            <option value='socialmedia'>Social media</option>
+                            <option value='gestor'>Gestor de Progetos</option>
                         </select>
                         <input 
                             

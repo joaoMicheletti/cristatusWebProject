@@ -29,8 +29,22 @@ export default function LoginUser() {
                 if(Response.res === 'User not found!'){
                     document.querySelector('.alerta_login').innerHTML ='Usuário não encontrado.'
                 } else {
-                    sessionStorage.setItem("tokenCrister", Response.res);                    
-                    Hystory('/dashboardCrister')
+                    //remover os sessions storage:
+                    sessionStorage.removeItem("tokenCrister");
+                    sessionStorage.removeItem("tokenColab");
+                    // direcionar colavborador para pagina de l=colaborador.
+                    // direcionar crister para pagina de crister.
+
+                    if(!response.data.res.colab){
+                        console.log('ola')
+                        sessionStorage.setItem("tokenCrister", response.data.res);                    
+                        Hystory('/dashboardCrister')
+                    }else {
+                        sessionStorage.setItem("tokenColab", response.data.res.colab);                    
+                        Hystory('/dashboardColab')
+
+                    }
+                    
                 }
                 console.log(Response.res )
             }).catch((erro) =>{

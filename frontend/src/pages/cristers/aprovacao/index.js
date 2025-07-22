@@ -103,11 +103,11 @@ export default function AprovacaoConteudo() {
               await Api.post('aprovarParaCliente', Data)
               
               .then((response) => {
-                console.log(response,'<<><><<><><><<<>>>>>')
+                console.log(response)
                 
                 if(response.data.res === 1){
                   let display = document.querySelector(`#_${item.id}`);
-                  display.style.display = 'none'
+                  //display.style.display = 'none'
                 
                   const audio = new Audio(clickSound);
                   audio.volume = 1;
