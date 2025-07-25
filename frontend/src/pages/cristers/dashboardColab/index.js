@@ -12,8 +12,7 @@ import Criacao from  '../../../assets/capa_Dashboard/criacao.webp';
 import Update from '../../../assets/capa_Dashboard/update.webp'
 import Ajustes  from '../../../assets/capa_Dashboard/ajustes.webp';
 import { useNavigate } from "react-router-dom";
-import Api from '../../../services/api';
-
+import Api from '../../../services/api.js';
 export default function DashboardColab() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
@@ -58,6 +57,8 @@ export default function DashboardColab() {
                 // Envia a assinatura atual para o backend para validar ou atualizar
                 await Api.post('/notifications/check', { subscription: existingSubscription });
                 console.log('Assinatura já existente verificada.');
+
+                console.log('assinatura atualizada', );
             } else {
                 // Requisita a chave pública do servidor
                 const { data } = await Api.get('/notificationsKey');
@@ -71,7 +72,7 @@ export default function DashboardColab() {
                 // Envia nova assinatura ao backend
                 await Api.post('/notificationsRegister', {
                 token: sessionStorage.getItem('tokenColab'),
-                typeUser: 'Cliente',
+                typeUser: 'colab',
                 tokenCrister: sessionStorage.getItem('tokenCrister'),
                 subscription: newSubscription
                 });

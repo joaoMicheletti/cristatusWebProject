@@ -62,3 +62,72 @@
 .notificationCliente:hover {
     opacity: 50%;
 }
+
+#containerNotifications {
+    background-color: rgb(58, 63, 63);
+    border-radius: 0px 0px 5px 5px;
+    width: 20%;
+    margin-top: 0px;
+    position: absolute;
+    top: 50px; /* Ajuste a posição desejada */
+    right: 40px;
+    height: 400px;
+    z-index: 1000;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    overflow-y: auto; /* Habilita o scroll vertical quando necessário */
+    display: none;
+
+}
+
+
+#containerNotifications h1 {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px; /* Maior espaço entre o título e as notificações */
+}
+
+.copronotification {
+    width: 100%; /* Ajusta a largura para a largura total do contêiner */
+    height: 50px;
+    background-color: rgb(97, 104, 104);
+    margin-bottom: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.imgIcon {
+    width: 50px;
+    height: 30px;
+    object-fit: cover; /* Garante que a imagem se ajuste ao tamanho do espaço */
+}
+
+.corpoNitification {
+    color: white;
+    font-size: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-self: center; /* Centraliza o texto verticalmente */
+    flex-grow: 1; /* Faz o texto ocupar o espaço restante */
+    line-height: 10px;
+}
+
+#CorpoUP {
+    background-color: rgb(97, 104, 104);
+    width: 100%;
+    border-radius: 5px 5px 5px 5px;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 3px;
+    
+}
+
+#up {
+    font-size: 20px;
+    cursor: pointer; /* Muda o cursor para indicar que é interativo */
+}

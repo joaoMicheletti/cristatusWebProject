@@ -90,7 +90,7 @@ export default function Dashboard() {
 
             const Data = {
                 token,
-                typeUser: "Cliente",
+                typeUser: "cliente", 
                 tokenCrister,
                 subscription
             };

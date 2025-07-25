@@ -169,7 +169,7 @@ export default function Calendario() {
                         let descrição = ""; // armazenado a descrição da arte.
                         
                         
-                        // mandar conteúdo para aprovação :
+                        // mandar conteúdo para atualização de conteudo. :
                         async function aprovedContent() {
                             console.log(conteudo.dia, conteudo.mes, conteudo.ano)
                             if (tema === ''){
