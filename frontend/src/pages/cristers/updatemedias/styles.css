@@ -1,3 +1,14 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+    display: none;
+    animation: spin 1s linear infinite;
+    width: 20%;
+    margin-left: 40%;
+}
 #sectionAprovacao {
     
     margin-top: 50px;
@@ -81,11 +92,15 @@
     display: flex;
     flex-direction: column;
 }
+.coteudoArquivos input {
+    cursor: pointer;
+}
 .coteudoArquivos button {
     margin-top: 10px;
     height: 30px;
     border-radius: 5px;
     width: 100%;
+    cursor: pointer;
 }
 #descricaoArte {
     margin-top: 10px;
@@ -101,7 +116,7 @@
     word-wrap: break-word;   
 }
 .redeImg { 
-    height: 200px;
+    height: 150px;
     padding: 10px; 
     max-width: 100%;
     height: auto;
@@ -109,10 +124,13 @@
 .imgREnder {
     display: none;
     width: 80%;
+    height: 50%;
     margin-left: 10%;
 }.rendervideo {
     display: none;
-    width: 100%;
+    width: 80%;
+    height: 50%;
+    margin-left: 10%;
 }
 .carrossel {
     background-color: rgb(80, 80, 126);
@@ -128,4 +146,5 @@
     width: 50%;
     border-radius: 5px;
     margin-left: 25%;
+    cursor: pointer;
 }

@@ -67,6 +67,7 @@
     width: 50%;
     height: 30px;
     margin-left: 25%;
+    cursor: pointer;
 }
 .BtnAprovaçãoCalendario input {
     cursor: pointer;

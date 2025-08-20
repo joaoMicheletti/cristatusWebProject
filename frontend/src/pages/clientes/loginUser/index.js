@@ -44,20 +44,17 @@ export default function LoginUser() {
     };
 
     // InstagramLoginButton.tsx
-    const empresaCNPJ = sessionStorage.getItem('tokenCrister')
+    const state = '38860300835';
     const clientId = '3117860508390563';
     const redirectUri = 'https://www.acasaprime1.com.br/callback'; // configure no Facebook Dev ;// colocar dominio do ngrok antes dde mandar para analise 
     const scope = [
         'instagram_basic',
-        'pages_show_list',
-        'pages_read_engagement',
-        'pages_manage_posts',
         'instagram_content_publish',
-        'ads_management',
-        'business_management'
+        'email',
+        'public_profile',
     ].join(',');
 
-    const loginUrl = `https://www.facebook.com/v23.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&state=${empresaCNPJ}`;
+    const loginUrl = `https://www.facebook.com/v23.0/dialog/oauth?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&response_type=code&state=${state}`;
 
     const handleLogin = () => {
         console.log(aceitaPolitica)

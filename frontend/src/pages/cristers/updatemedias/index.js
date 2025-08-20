@@ -4,6 +4,7 @@ import './styles.css';
 import Api from '../../../services/api';
 import { FaCalendarAlt } from "react-icons/fa";
 import clickSound from '../../../assets/music/aproved.mp3'
+import { FaSyncAlt } from 'react-icons/fa';
 
 export default function AprovacaoConteudo() {
   // url de imagens 
@@ -95,7 +96,9 @@ export default function AprovacaoConteudo() {
               }));
             };
             const handleUpload = async (item) => {
+              
               const files = selectedFilesMap[item.id] || [];
+              console.log(files)
               console.log('Iniciando upload para item', item.id, 'arquivos:', files);
 
               if (files.length === 0) {
@@ -118,9 +121,21 @@ export default function AprovacaoConteudo() {
               // verificar se o aray de arquivos possui masi que um arquivo!
               // se sim execuar um loop para enviar um arquivo de cada ves ao backend.
               //variavel responsável pelo nome do arquivo.
-              let nome = `_${item.formato}-${item.dia}-${item.mes}-${item.ano}-`
-              console.log(files.length)
+              let nome = `${item.tokenUser}_${item.formato}-${item.dia}-${item.mes}-${item.ano}-`
+              console.log(nome)
+              console.log('quantidade de arquivos.',files.length)
               if(files.length === 1){
+                //Verificar o tamho dos arquivos de acordo com o formato.
+                // para Reels - no maximo 300MB
+                const MAX_REELS_BYTES = 300_000_000;        // 300 MB
+
+                if( item.formato === 'video' ){
+                  if(files[0].size > MAX_REELS_BYTES){
+                    console.log('Maior')
+                    alert('certifique-se de que os Vídeos para Reels tem no Maximo 300MB -')
+                    return;
+                  }
+                }
                 const formDataUnico = new FormData(); // so para deixar o nome unico para cada necessidade.
                 //tipo do arquivo.
                 let typeName = files[0].type
@@ -142,6 +157,7 @@ export default function AprovacaoConteudo() {
                     tokenUser: item.tokenUser,
                     nomeArquivos: response.data.filename
                   }
+                  console.log(Data)
                   if(item.formato ==='estatico'){
                     let elemento2 = document.querySelector(`#video_${item.id}`)
                     console.log(elemento2)
@@ -157,6 +173,10 @@ export default function AprovacaoConteudo() {
                     elemento2.style.display = 'none'
                     let elemento = document.querySelector(`#video_${item.id}`)
                     elemento.style.display = 'block'
+                    let animation = document.querySelector('.animate-spin');
+                    animation.style.display = 'none'
+                    
+                    console.log(elemento2.src)
                     elemento.src = `${URL}${response.data.filename}`
                   }
 
@@ -177,9 +197,26 @@ export default function AprovacaoConteudo() {
                 })
                 
               } else if (files.length > 1){
+                console.log('Aqui é maior que 1')
                 const meuArray = [];
                 console.log(files)
                 for (let i = 0; i < files.length; i++){
+                  console.log('Aqui esrtamos dentro do loop', item.formato, files[i].type, files[i].size)
+                  // verificar dentro do loop para garantir que todos os arquivos passe pela verificação.
+                  const MAX_CAROUSEL_STORY_BYTES = 100_000_000; // 100 MB
+                  if( item.formato === 'carrossel' ){
+                    let typeString = `${files[i].type}`;
+                    console.log(typeString.toString)
+                    if( typeString.startsWith('video/')){
+                      console.log('Temos um Video:', files[i].type)
+                      if(files[i].size > MAX_CAROUSEL_STORY_BYTES){
+                        console.log('Maior')
+                        alert('certifique-se de que os Vídeos para o Carrossel tem no Maximo 300MB -')
+                      return
+                      };
+                    };
+                  };
+
                   let typeName = files[i].type
                   let extensao = typeName.split('/');
                   console.log(extensao)
@@ -213,8 +250,7 @@ export default function AprovacaoConteudo() {
                 let carooseel = document.querySelector(`#carrossel_${item.id}`);
                 carooseel.style.display = 'block'
 
-                // criar loop para apresentação do carroseel:
-                
+                // criar loop para apresentação do carroseel:  
                 for (let i =0; i<render.length; i++) {
                   console.log(render[i].filename)
                   const ext = render[i].filename.split('.').pop()?.toLowerCase();     
@@ -222,11 +258,11 @@ export default function AprovacaoConteudo() {
                   let componente = document.querySelector(`#carrossel_${item.id}`)
 
                   if (ext && videoExts.includes(ext)) {
-                    console.log('vide aui',render, render[i].filename)
-                    componente.innerHTML += `<video style="width:100%" margin-left:0%" autoPlay={false}  muted={false} controls className="rendervideo"`+`type="video/mp4"`+`src="${URL}${render[i].filename}">`+`</video>`
+                    console.log('vide aqui',render, render[i].filename)
+                    componente.innerHTML += `<video style="width:80%; height:50%; margin-left:10%" autoPlay={false}  muted={false} controls className="rendervideo"`+`type="video/mp4"`+`src="${URL}${render[i].filename}">`+`</video>`
                   } else {
                     console.log('foto aqui');
-                    componente.innerHTML += `<br/><img style="width:100%" height:80% margin-left:0%" `+`src="${URL}${render[i].filename}" alt="teste"/>`
+                    componente.innerHTML += `<br/><img style="width:80%; height:80%; margin-left:10%" `+`src="${URL}${render[i].filename}" alt="teste"/>`
                   }
                 }
                          
@@ -268,11 +304,11 @@ export default function AprovacaoConteudo() {
                 .then((response) => {
                   console.log(response)
                   if(response.data.res === 1){
-                    let display = document.querySelector(`#_${item.id}`);
-                    display.style.display = 'none'
                     const audio = new Audio(clickSound);
                     audio.volume = 1;
                     audio.play();
+                    let display = document.querySelector(`#_${item.id}`);
+                    display.style.display = 'none'
                   }
                   }).catch((erro) => {
                     console.log(erro);
@@ -332,11 +368,11 @@ export default function AprovacaoConteudo() {
                 
                 <div className="redeImg">
                   <img className="imgREnder" id={`img_${item.id}`} alt="teste" />
+                  <FaSyncAlt className="animate-spin" color="white"/>
                   <video autoPlay={false}  muted={false} controls className="rendervideo" id={`video_${item.id}`} type="video/mp4"  src=""></video>
                 </div>
 
-                <div id={`carrossel_${item.id}`} className="carrossel">
-                                    
+                <div id={`carrossel_${item.id}`} className="carrossel">                   
                 </div>
                 
 
