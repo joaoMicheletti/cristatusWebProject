@@ -125,6 +125,19 @@ export default function AprovacaoConteudo() {
               console.log(nome)
               console.log('quantidade de arquivos.',files.length)
               if(files.length === 1){
+                if( item.formato === 'estatico'){
+                  let typeString = `${files[0].type}`;
+                  if( typeString.startsWith('video/')){
+                    alert('O arquivo para esse tipom de publicação deve ser uma imagem')
+                  }
+                }
+                if( item.formato === 'video'){
+                  let typeString = `${files[0].type}`;
+                  if( !typeString.startsWith('video/')){
+                    alert('O arquivo para esse tipom de publicação deve ser um Vídeo')
+                    return
+                  }
+                }
                 //Verificar o tamho dos arquivos de acordo com o formato.
                 // para Reels - no maximo 300MB
                 const MAX_REELS_BYTES = 300_000_000;        // 300 MB
@@ -216,7 +229,6 @@ export default function AprovacaoConteudo() {
                       };
                     };
                   };
-
                   let typeName = files[i].type
                   let extensao = typeName.split('/');
                   console.log(extensao)

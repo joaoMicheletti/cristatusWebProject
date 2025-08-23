@@ -224,8 +224,32 @@ export default function AprovacaoConteudo() {
               // verificar se o aray de arquivos possui masi que um arquivo!
               // se sim execuar um loop para enviar um arquivo de cada ves ao backend.
               //variavel responsável pelo nome do arquivo.
-              let nome = `-${item.formato}-${item.dia}-${item.mes}-${item.ano}-update`
+              let nome = `${item.tokenUser}_${item.formato}-${item.dia}-${item.mes}-${item.ano}-update`
               if(files.length === 1){
+                if( item.formato === 'estatico'){
+                  let typeString = `${files[0].type}`;
+                  if( typeString.startsWith('video/')){
+                    alert('O arquivo para esse tipom de publicação deve ser uma imagem')
+                  }
+                }
+                if( item.formato === 'video'){
+                  let typeString = `${files[0].type}`;
+                  if( !typeString.startsWith('video/')){
+                    alert('O arquivo para esse tipom de publicação deve ser um Vídeo')
+                    return
+                  }
+                }
+                //Verificar o tamho dos arquivos de acordo com o formato.
+                // para Reels - no maximo 300MB
+                const MAX_REELS_BYTES = 300_000_000;        // 300 MB
+
+                if( item.formato === 'video' ){
+                  if(files[0].size > MAX_REELS_BYTES){
+                    console.log('Maior')
+                    alert('certifique-se de que os Vídeos para Reels tem no Maximo 300MB -')
+                    return;
+                  }
+                }
                 const formDataUnico = new FormData(); // so para deixar o nome unico para cada necessidade.
                 //tipo do arquivo.
                 let typeName = files[0].type
@@ -286,6 +310,20 @@ export default function AprovacaoConteudo() {
                 const meuArray = [];
                 console.log(files)
                 for (let i = 0; i < files.length; i++){
+                  // verificar dentro do loop para garantir que todos os arquivos passe pela verificação.
+                  const MAX_CAROUSEL_STORY_BYTES = 100_000_000; // 100 MB
+                  if( item.formato === 'carrossel' ){
+                    let typeString = `${files[i].type}`;
+                    console.log(typeString.toString)
+                    if( typeString.startsWith('video/')){
+                      console.log('Temos um Video:', files[i].type)
+                      if(files[i].size > MAX_CAROUSEL_STORY_BYTES){
+                        console.log('Maior')
+                        alert('certifique-se de que os Vídeos para o Carrossel tem no Maximo 300MB -')
+                      return
+                      };
+                    };
+                  };
                   let typeName = files[i].type
                   let extensao = typeName.split('/');
                   console.log(extensao)
